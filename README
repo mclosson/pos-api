@@ -10,7 +10,7 @@ curl -X POST -H "Accept: application/json" -H "Content-type: application/json" h
 curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -H "Authorization: Token token=\"ABCDEF0123456789\"" http://localhost:3000/api/v1/tickets -d "{\"location_id\":\"location4\"}"
 {"ticket_id":"5736282738"}
 
-# Invalid ticket used to attempt creation of a ticket, HTTP Access denied is returned
+# Invalid token used to attempt creation of a ticket, HTTP Access denied is returned
 curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -H "Authorization: Token token=\"ABCDEF012XXXX89\"" http://localhost:3000/api/v1/tickets -d "{\"location_id\":\"location4\"}"
 HTTP Token: Access denied.
 
