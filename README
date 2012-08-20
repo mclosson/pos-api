@@ -1,0 +1,18 @@
+# Successful login to API: HTTP 200 OK and retrieves a token (simulated token for now)
+curl -X POST -H "Accept: application/json" -H "Content-type: application/json" http://localhost:3000/api/v1/sessions -d "{\"username\":\"matt\",\"password\":\"mpass\"}"
+{"token":"ABCDEF0123456789"}
+
+# Failed username or password to API: HTTP 500 and gets an error message in JSON
+curl -X POST -H "Accept: application/json" -H "Content-type: application/json" http://localhost:3000/api/v1/sessions -d "{\"username\":\"matt\",\"password\":\"pass\"}"
+{"error":"Invalid username or password"}
+
+# Successful creation of a ticket via authenticated API user: HTTP 200 and gets the ticket_id
+curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -H "Authorization: Token token=\"ABCDEF0123456789\"" http://localhost:3000/api/v1/tickets -d "{\"location_id\":\"location4\"}"
+{"ticket_id":"5736282738"}
+
+# Invalid ticket used to attempt creation of a ticket, HTTP Access denied is returned
+curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -H "Authorization: Token token=\"ABCDEF012XXXX89\"" http://localhost:3000/api/v1/tickets -d "{\"location_id\":\"location4\"}"
+HTTP Token: Access denied.
+
+TODO: For some reason when invalid JSON is sent to the server rather than rendering HTTP/400/422/500 as desired in some cases an error HTML page is returned, investigate why.
+      It has something to do with Rack::Middleware
