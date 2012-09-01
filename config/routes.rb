@@ -4,15 +4,15 @@ Posapi::Application.routes.draw do
       # Session Management
       # post "user/:location_id/session" => 'User#login'  # login /user/{location_id}/session
       # delete "user/:location_id/session/:token" => 'User#logout' # logoff /user/{location_id}/session/{token}
-      post 'sessions' => 'Session#create'
-      delete 'sessions/:id' => 'Session#destroy'
+      post 'sessions' => 'sessions#create'
+      delete 'sessions/:id' => 'sessions#destroy'
 
       # Time Keeping
       # post "user/:location_id/clock/:token" => 'Clock#in' #clock in POST /user/{location_id}/clock/{token}
       # delete "user/:location_id/clock/:token" => 'Clock@out' #clock out DEL /user/{location_id}/clock/{token}      
 
       # Sales
-      post 'tickets' => 'Ticket#create' # create ticket POST /ticket/{location_id}/ returns: ticket_id
+      post 'tickets' => 'ticket#create' # create ticket POST /ticket/{location_id}/ returns: ticket_id
       # get "sku/:location_id/:sku": 'Sku#details' # get SKU Details GET /SKU/{location_id}/{SKU}
       # sku lookup
       # get "sku/:location_id/:sku" # SKU lookup GET /SKU/{location_id}/{SKU}

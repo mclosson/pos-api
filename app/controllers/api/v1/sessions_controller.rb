@@ -1,4 +1,4 @@
-class Api::V1::SessionController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
   respond_to :json
 
   def create
