@@ -2,7 +2,7 @@ class Api::V1::TicketsController < Api::V1::ApiController
   respond_to :json
   
   def create
-    if params[:location_id]
+    if params[:location]
       # create the ticket, here's some fake json for now....
       render json: '{"ticket_id":"5736282738"}', status: :created
       #render json: "#{request.env}", status: :created
