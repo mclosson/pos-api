@@ -15,5 +15,5 @@ curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -
 HTTP Token: Access denied.
 
 # Invalid JSON body is sent with an authenticated request to create a ticket: HTTP 422 (:unprocessable_entity) and gets an error message in a JSON response
-curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -H "Authorization: Token token=\"ABCDEF0123456789\"" http://localhost:3000/api/v1/tickets -d "location_id\":\"location4\"}"
+curl -X POST -H "Accept: application/json" -H "Content-type: application/json" -H "Authorization: Token token=\"ABCDEF0123456789\"" http://localhost:3000/api/v1/tickets -d "location\":\"location4\"}"
 {"error":"Invalid JSON"}

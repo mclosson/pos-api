@@ -6,12 +6,7 @@ class TicketsControllerTest < ActionController::TestCase
     @controller = Api::V1::TicketsController.new
     @request.env['Accept'] = 'application/json'
     @request.env['Content-type'] = 'application/json'
-    @request.env['Authorization'] = 'Token token="ABCDEF0123456789"'
-    # @request.env['HTTP_AUTHORIZATION'] = encode_credentials('ABCDEF0123456789')
-    # @request.env['X-HTTP_AUTHORIZATION'] = "Token token=\"ABCDEF0123456789\""
-    # @request.env['X_HTTP_AUTHORIZATION'] = "Token token=\"ABCDEF0123456789\""
-    # @request.env['REDIRECT_X_HTTP_AUTHORIZATION'] = "Token token=\"ABCDEF0123456789\""
-    # @request.env['HTTP_AUTHORIZATION'] = "Token token=\"ABCDEF0123456789\""
+    @request.env['HTTP_AUTHORIZATION'] = 'Token token="ABCDEF0123456789"'
   end
 
   def test_successfully_create_ticket
