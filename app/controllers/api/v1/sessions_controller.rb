@@ -37,7 +37,7 @@ class Api::V1::SessionsController < ApplicationController
 
   def authenticate(username, password)
     user = User.find_by_username(username)
-    user.authenticate(password)
+    user.authenticate(password) unless user.nil?
   end
 
   # For most other controllers this method is defined and inherited
