@@ -20,16 +20,23 @@ class Api::V1::SessionsController < ApplicationController
   # post 'sessions/clock'
   def clock_in
     @clock_in_time = Time.now
+    # Need to associate location_id and user_id with a token and pull those out to use here
+    # For the moment leave these blank but need to implement this next to support multiple users
+    EmployeeClockIn.create(clockin_datetime: @clock_in_time, location_id: nil, user_id: nil)
     render json: "{'time':'#{@clock_in_time}'}", status: :ok
   end
 
   # delete 'sessions/clock'
   def clock_out
     clock_out_time = Time.now
-    # Where to store the clock_in_time at?  @variables fall out of scope when the controller instance exits
-    #time_worked = @clock_in_time - clock_out_time
-    #TODO: temporary fix only
-    time_worked = Time.now
+    clock_in_time = EmployeeClockIn.last.clockin_datetime
+
+    if clock_in_time
+      time_worked = clock_in_time - clock_out_time
+    else
+      time_worked = 0
+    end
+
     render json: "{'time':'#{time_worked}'}", status: :ok
   end
 
