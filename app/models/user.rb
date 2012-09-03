@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
                   :firstname, :lastname, :password, :password_confirmation, :shortname, :username
 
   belongs_to :account
+  has_many :employee_clock_ins
 
   has_secure_password
 end
