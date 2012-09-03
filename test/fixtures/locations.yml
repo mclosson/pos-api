@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  address1: MyString
+sorna:
+  address1: 200 Dinosaur Way
   address2: MyString
-  city: MyString
+  city: Isla Sorna
   description: MyText
   direct_distribution: false
   fax: MyString
-  active: false
+  active: true
   overwrite_cost_price: false
   overwrite_sales_price: false
   overwrite_season: false
@@ -16,16 +16,16 @@ one:
   round_sales_price: false
   short_description: MyString
   zipcode: MyString
-  account_id: 1
+  account_id: ingen
 
-two:
-  address1: MyString
+nublar:
+  address1: 1875 International Drive
   address2: MyString
-  city: MyString
+  city: Isla Nublar
   description: MyText
   direct_distribution: false
   fax: MyString
-  active: false
+  active: true
   overwrite_cost_price: false
   overwrite_sales_price: false
   overwrite_season: false
@@ -34,4 +34,4 @@ two:
   round_sales_price: false
   short_description: MyString
   zipcode: MyString
-  account_id: 1
+  account_id: ingen

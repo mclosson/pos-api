@@ -9,14 +9,14 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   def test_successfully_create_new_session
-    parameters = {username: 'matt', password: 'mpass'}
+    parameters = {username: 'mclosson', password: 'mpass'}
     post(:create, parameters)    
     assert_response :created
     assert_equal '{"token":"ABCDEF0123456789"}', @response.body
   end
 
   def test_create_session_invalid_username_or_password
-    parameters = {username: 'matt', password: 'badpass'}
+    parameters = {username: 'mclosson', password: 'badpass'}
     post(:create, parameters)    
     assert_response :unauthorized
     assert_equal '{"error":"Invalid username or password"}', @response.body

@@ -4,7 +4,7 @@ class Api::V1::SessionsController < ApplicationController
   before_filter :restrict_access, only: [:clock_in, :clock_out]
 
   def create
-    if params[:username] && params[:password] && authenticate(params[:username], params[:password])
+    if authenticate(params[:username], params[:password])
       render json: '{"token":"ABCDEF0123456789"}', status: :created
     else
       render json: '{"error":"Invalid username or password"}', status: :unauthorized
@@ -26,16 +26,18 @@ class Api::V1::SessionsController < ApplicationController
   # delete 'sessions/clock'
   def clock_out
     clock_out_time = Time.now
-    time_worked = @clock_in_time - clock_out_time
-    render json: '{"time":"#{time_worked}"}', status: :ok
+    # Where to store the clock_in_time at?  @variables fall out of scope when the controller instance exits
+    #time_worked = @clock_in_time - clock_out_time
+    #TODO: temporary fix only
+    time_worked = Time.now
+    render json: "{'time':'#{time_worked}'}", status: :ok
   end
 
   private
 
   def authenticate(username, password)
-    users = {'matt' => 'mpass', 'isi' => 'ipass'}
-    users[username] == password
-    #User.find_by_username_and_password(username, password)
+    user = User.find_by_username(username)
+    user.authenticate(password)
   end
 
   # For most other controllers this method is defined and inherited

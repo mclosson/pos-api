@@ -11,12 +11,18 @@ Location.destroy_all
 User.destroy_all
 
 ingen = Account.create(name: "Ingen Corporation")
+
 sorna = Location.create(account_id: ingen.id, address1: '200 Dinosaur Way', city: 'Isla Sorna')
+
 Location.create(account_id: ingen.id, address1: '1875 International Drive', city: 'Isla Nublar')
+
 User.create(account_id: ingen.id, firstname: 'Isi', lastname: 'Robayna', shortname: 'IR', 
-            username: 'irobayna', email: 'isi@ingen.com', enabled: true, default_location: sorna.id)
+            username: 'irobayna', password: 'ipass', email: 'isi@ingen.com', 
+            enabled: true, default_location: sorna.id)
+
 User.create(account_id: ingen.id, firstname: 'Matt', lastname: 'Closson', shortname: 'MC',
-            username: 'mclosson', email: 'matt@ingen.com', enabled: true, default_location: sorna.id)
+            username: 'mclosson', password: 'mpass', email: 'matt@ingen.com', 
+            enabled: true, default_location: sorna.id)
 
 Account.create(name: "Isi and Matt's Clothing Company")
 Account.create(name: "Hurley Surf Wear")

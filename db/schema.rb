@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903153502) do
+ActiveRecord::Schema.define(:version => 20120903154726) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20120903153502) do
     t.boolean  "enabled"
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "password"
+    t.string   "password_digest"
     t.string   "shortname"
     t.string   "username"
     t.integer  "account_id"
