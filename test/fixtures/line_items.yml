@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sales_ticket_id: 1
+  quantity: 1
+  sales_price: 1.5
+  sku: MyString
+  void: false
+  discount: 1
+
+two:
+  sales_ticket_id: 1
+  quantity: 1
+  sales_price: 1.5
+  sku: MyString
+  void: false
+  discount: 1

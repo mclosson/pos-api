@@ -11,12 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903141722) do
+ActiveRecord::Schema.define(:version => 20120903153502) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "sales_ticket_id"
+    t.integer  "quantity"
+    t.float    "sales_price"
+    t.string   "sku"
+    t.boolean  "void"
+    t.integer  "discount"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "locations", :force => true do |t|
@@ -38,6 +49,26 @@ ActiveRecord::Schema.define(:version => 20120903141722) do
     t.integer  "account_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+  end
+
+  create_table "sales_tickets", :force => true do |t|
+    t.integer  "location_id"
+    t.boolean  "multi_payment"
+    t.integer  "payment_type"
+    t.boolean  "refunds_returns_allowed"
+    t.integer  "sales_person_id"
+    t.boolean  "synchronized"
+    t.float    "tax_amount"
+    t.float    "tax_rate"
+    t.boolean  "ticket_cleared"
+    t.datetime "ticket_cleared_datetime"
+    t.datetime "ticket_datetime"
+    t.datetime "ticket_expired"
+    t.datetime "ticket_expired_refund"
+    t.integer  "vip_client_id"
+    t.boolean  "void"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "users", :force => true do |t|

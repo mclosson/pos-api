@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  location_id: 1
+  multi_payment: false
+  payment_type: 1
+  refunds_returns_allowed: false
+  sales_person_id: 1
+  synchronized: false
+  tax_amount: 1.5
+  tax_rate: 1.5
+  ticket_cleared: false
+  ticket_cleared_datetime: 2012-09-03 11:25:35
+  ticket_datetime: 2012-09-03 11:25:35
+  ticket_expired: 2012-09-03 11:25:35
+  ticket_expired_refund: 2012-09-03 11:25:35
+  vip_client_id: 1
+  void: false
+
+two:
+  location_id: 1
+  multi_payment: false
+  payment_type: 1
+  refunds_returns_allowed: false
+  sales_person_id: 1
+  synchronized: false
+  tax_amount: 1.5
+  tax_rate: 1.5
+  ticket_cleared: false
+  ticket_cleared_datetime: 2012-09-03 11:25:35
+  ticket_datetime: 2012-09-03 11:25:35
+  ticket_expired: 2012-09-03 11:25:35
+  ticket_expired_refund: 2012-09-03 11:25:35
+  vip_client_id: 1
+  void: false

@@ -22,4 +22,28 @@ class SessionsControllerTest < ActionController::TestCase
     assert_equal '{"error":"Invalid username or password"}', @response.body
   end
 
+  def test_clock_in_returns_clock_in_time
+    @request.env['HTTP_AUTHORIZATION'] = 'Token token="ABCDEF0123456789"'    
+    post(:clock_in)
+    assert_response :ok
+    assert_match /{'time':'.*'}/, @response.body
+  end
+
+  def test_clock_in_with_no_token_unauthorized
+    post(:clock_in)
+    assert_response :unauthorized
+  end    
+
+  def test_clock_out_returns_clock_out_time
+    @request.env['HTTP_AUTHORIZATION'] = 'Token token="ABCDEF0123456789"'    
+    delete(:clock_out)
+    assert_response :ok
+    assert_match /{'time':'.*'}/, @response.body
+  end
+
+  def test_clock_out_with_no_token_unauthorized
+    delete(:clock_out)
+    assert_response :unauthorized
+  end
+
 end
