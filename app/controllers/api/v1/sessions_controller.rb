@@ -10,36 +10,23 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def destroy
-    if params[:token] == "ABCDEF0123456789"
-      render json: '{"message":"Logged out"}', status: :ok
-    else
-      render json: '{"error:":"Invalid token"}', status: :unauthorized
-    end
+    render json: '{"message":"Logged out"}', status: :ok
   end
 
-####### Time keeping functions
+  ####### Time keeping functions
 
-## Matt, notice we are checking for token everywhere, perhas a good oportunity to refactor this logic out of
-## every method
-
-# post 'sessions/clock'
+  # post 'sessions/clock'
   def clock_in
-    if params[:token] == "ABCDEF0123456789"
-      @clock_in_time = Time.new
-      render json: '{"time":"#{@clock_in_time}"}', status: ok
-    else
-      render json: '{"error:":"Invalid token"}', status: :unauthorized
+    @clock_in_time = Time.new
+    render json: '{"time":"#{@clock_in_time}"}', status: ok
   end
 
-# delete 'sessions/clock'
+  # delete 'sessions/clock'
   def clock_out
     clock_out_time = Time.new
     time_worked = @clock_in_time - clock_out_time
     render json: '{"time":"#{time_worked}"}', status: ok
-    else
-      render json: '{"error:":"Invalid token"}', status: :unauthorized
   end
-
 
   private
 
