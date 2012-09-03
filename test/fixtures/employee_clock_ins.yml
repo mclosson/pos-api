@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  clockin_datetime: 2012-09-03 13:17:10
+  clockout_datetime: 2012-09-03 13:17:10
+  hours_worked: 1
+  location_id: 1
+  user_id: 1
+
+two:
+  clockin_datetime: 2012-09-03 13:17:10
+  clockout_datetime: 2012-09-03 13:17:10
+  hours_worked: 1
+  location_id: 1
+  user_id: 1
