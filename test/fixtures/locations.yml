@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  address1: MyString
+  address2: MyString
+  city: MyString
+  description: MyText
+  direct_distribution: false
+  fax: MyString
+  active: false
+  overwrite_cost_price: false
+  overwrite_sales_price: false
+  overwrite_season: false
+  phone: MyString
+  province: MyString
+  round_sales_price: false
+  short_description: MyString
+  zipcode: MyString
+  account_id: 1
+
+two:
+  address1: MyString
+  address2: MyString
+  city: MyString
+  description: MyText
+  direct_distribution: false
+  fax: MyString
+  active: false
+  overwrite_cost_price: false
+  overwrite_sales_price: false
+  overwrite_season: false
+  phone: MyString
+  province: MyString
+  round_sales_price: false
+  short_description: MyString
+  zipcode: MyString
+  account_id: 1
