@@ -15,9 +15,16 @@ class SessionsControllerTest < ActionController::TestCase
     assert_equal '{"token":"ABCDEF0123456789"}', @response.body
   end
 
-  def test_create_session_invalid_username_or_password
+  def test_create_session_invalid_password
     parameters = {username: 'mclosson', password: 'badpass'}
     post(:create, parameters)    
+    assert_response :unauthorized
+    assert_equal '{"error":"Invalid username or password"}', @response.body
+  end
+
+  def test_create_session_invalid_username
+    parameters = {username: 'baduser', password: 'irrelevant'}
+    post(:create, parameters)
     assert_response :unauthorized
     assert_equal '{"error":"Invalid username or password"}', @response.body
   end
