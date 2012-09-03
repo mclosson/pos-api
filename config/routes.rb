@@ -5,7 +5,7 @@ Posapi::Application.routes.draw do
       # post "user/:location_id/session" => 'User#login'  # login /user/{location_id}/session
       # delete "user/:location_id/session/:token" => 'User#logout' # logoff /user/{location_id}/session/{token}
       post 'sessions' => 'sessions#create'
-      delete 'sessions/:id' => 'sessions#destroy'
+      delete 'sessions' => 'sessions#destroy'
 
       # Time Keeping
       # post "user/:location_id/clock/:token" => 'Clock#in' #clock in POST /user/{location_id}/clock/{token}
