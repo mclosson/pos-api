@@ -2,12 +2,13 @@ class Api::V1::TicketsController < Api::V1::ApiController
   respond_to :json
   
   def create
-    if params[:location]
-      # create the ticket, here's some fake json for now....
-      render json: '{"ticket_id":"5736282738"}', status: :created
-      #render json: "#{request.env}", status: :created
+    ticket = SalesTicket.create(location_id: nil, sales_person_id: nil)
+
+    if ticket
+      render json: "{'ticket_id':'#{ticket.id}'}", status: :created
     else
-      render json: '{"error":"Could not create ticket becase..."}', status: :unprocessable_entity
+      error_messages = ticket.errors.full_messages.join(', ')
+      render json: "{'error': '#{error_messages}", status: :unprocessable_entity
     end
   end
 end

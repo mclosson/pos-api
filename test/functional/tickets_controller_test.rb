@@ -13,7 +13,7 @@ class TicketsControllerTest < ActionController::TestCase
     parameters = {location: 'testlocation'}
     post(:create, parameters)    
     assert_response :created
-    assert_equal '{"ticket_id":"5736282738"}', @response.body
+    assert_match /'{"ticket_id":"\d+"}'/, @response.body
   end
 
   def test_create_ticket_no_location_given
