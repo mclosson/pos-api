@@ -9,8 +9,8 @@ isi:
   password_digest: <%= BCrypt::Password.create("ipass") %>
   shortname: IR
   username: irobayna
-  account_id: ingen
-  default_location: 1
+  account: ingen
+  default_location: sorna
 
 matt:
   email: matt@ingen.com
@@ -21,5 +21,5 @@ matt:
   password_digest: <%= BCrypt::Password.create("mpass") %>
   shortname: MC
   username: mclosson
-  account_id: ingen
-  default_location: 1
+  account: ingen
+  default_location: sorna

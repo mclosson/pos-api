@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
   has_many :employee_clock_ins
 
   has_secure_password
+
+  def location_valid?(location_id)
+    raise ArgumentError unless location_id
+    self.account.locations.where(id: location_id).count == 1
+  end
+
 end

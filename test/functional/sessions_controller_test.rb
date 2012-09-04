@@ -12,7 +12,8 @@ class SessionsControllerTest < ActionController::TestCase
     parameters = {username: 'mclosson', password: 'mpass'}
     post(:create, parameters)    
     assert_response :created
-    assert_equal '{"token":"ABCDEF0123456789"}', @response.body
+    #TODO: Figure out how to make a more accurrate regex for a valid token
+    assert_match /{"token":".*"}/, @response.body
   end
 
   def test_create_session_invalid_username_or_password

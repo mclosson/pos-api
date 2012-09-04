@@ -8,14 +8,12 @@ class Api::V1::SessionsController < ApplicationController
     if user
       location = user.default_location
 
-      if params[:location]
-        if user.account.locations.where(id: params[:location]).count == 1
-          location = params[:location]
-        end
+      if params[:location] && user.location_valid?(params[:location])
+        location = params[:location]
       end
 
       apikey = ApiKey.create(user_id: user.id, location_id: location)
-      render json: "{'token':'#{apikey.access_token}'}", status: :created
+      render json: "{\"token\":\"#{apikey.access_token}\"}", status: :created
     else
       render json: '{"error":"Invalid username or password"}', status: :unauthorized
     end
