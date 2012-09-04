@@ -4,8 +4,18 @@ class Api::V1::SessionsController < ApplicationController
   before_filter :restrict_access, only: [:clock_in, :clock_out]
 
   def create
-    if authenticate(params[:username], params[:password])
-      render json: '{"token":"ABCDEF0123456789"}', status: :created
+    user = authenticate(params[:username], params[:password])
+    if user
+      location = user.default_location
+
+      if params[:location]
+        if user.account.locations.where(id: params[:location]).count == 1
+          location = params[:location]
+        end
+      end
+
+      apikey = ApiKey.create(user_id: user.id, location_id: location)
+      render json: "{'token':'#{apikey.access_token}'}", status: :created
     else
       render json: '{"error":"Invalid username or password"}', status: :unauthorized
     end
