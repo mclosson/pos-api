@@ -1,7 +1,7 @@
 class Api::V1::SessionsController < ApplicationController
   
   respond_to :json
-  before_filter :restrict_access, only: [:clock_in, :clock_out]
+  before_filter :restrict_access, only: [:destroy, :clock_in, :clock_out]
 
   def create
     user = authenticate(params[:username], params[:password])
@@ -20,6 +20,9 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def destroy
+    # Need to remove token from cache and database
+    Rails::cache.delete("apikey_#{@apikey.access_token}")
+    @apikey.destroy
     render json: '{"message":"Logged out"}', status: :ok
   end
 
@@ -50,7 +53,7 @@ class Api::V1::SessionsController < ApplicationController
     if lasttimecard
       lasttimecard.clockout_datetime = clock_out_time
       lasttimecard.save
-      timeworked = lasttimecard.clockout_datetime - lasttimecard.clockin_datetime
+      time_worked = lasttimecard.clockout_datetime - lasttimecard.clockin_datetime
       render json: "{\"time_worked\":\"#{time_worked}\"}", status: :ok
     else
       render json: "{\"error\":\"Could not find your last clock in\"}", status: :precondition_failed
