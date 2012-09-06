@@ -28,12 +28,12 @@ class Api::V1::ApiController < ApplicationController
 
   def find_and_cache_token(token)
     begin
-      apikey = ApiKey.find(token)
-      Rails::cache.write("apikey_#{token}", apikey) unless apikey.nil?
+      @apikey = ApiKey.find(token)
+      Rails::cache.write("apikey_#{token}", @apikey) unless @apikey.nil?
     rescue ActiveRecord::RecordNotFound
       @apikey = nil
     ensure
-      return !apikey.nil?
+      return !@apikey.nil?
     end
   end
 
