@@ -29,8 +29,7 @@ class TicketsControllerTest < ActionController::TestCase
 
   def test_invalid_token_unauthorized
     @request.env['HTTP_AUTHORIZATION'] = 'Token token="BADTOKEN"'    
-    parameters = {location: 'testlocation'}
-    post(:create, parameters)
+    post(:create)
     assert_response :unauthorized
   end
 
