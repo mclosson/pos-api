@@ -9,20 +9,21 @@ class TicketsControllerTest < ActionController::TestCase
   end
 
   def test_successfully_create_ticket
-    @request.env['HTTP_AUTHORIZATION'] = 'Token token="ABCDEF0123456789"'    
-    parameters = {location: 'testlocation'}
+    token = api_keys(:ingen_sorna_matt).access_token
+    location_id = locations(:sorna).id
+    @request.env['HTTP_AUTHORIZATION'] = 'Token token="' + token + '"'    
+    parameters = {location: location_id}
     post(:create, parameters)    
     assert_response :created
-    #TODO: Create a more accurrate regex for the ticket_id \d+ ???
     assert_match /{"ticket_id":".*"}/, @response.body
     #TODO: Add an assert to ensure the ticket got our location and user_id
   end
 
   def test_create_ticket_no_location_given_uses_default_location
-    @request.env['HTTP_AUTHORIZATION'] = 'Token token="ABCDEF0123456789"'    
+    token = api_keys(:ingen_sorna_matt).access_token
+    @request.env['HTTP_AUTHORIZATION'] = 'Token token="' + token + '"'    
     post :create    
     assert_response :created
-    #TODO: Create a more accurrate regex for the ticket_id \d+ ???
     assert_match /{"ticket_id":".*"}/, @response.body
     #TODO: Add an assert to ensure the ticket got our default_location and user_id    
   end

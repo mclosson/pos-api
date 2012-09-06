@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 isi:
+  id: 1
   email: isi@ingen.com
   employee_id: MyString
   enabled: true
@@ -10,9 +11,10 @@ isi:
   shortname: IR
   username: irobayna
   account: ingen
-  default_location: sorna
+  default_location: 1
 
 matt:
+  id: 2
   email: matt@ingen.com
   employee_id: MyString
   enabled: true
@@ -22,4 +24,4 @@ matt:
   shortname: MC
   username: mclosson
   account: ingen
-  default_location: sorna
+  default_location: 1

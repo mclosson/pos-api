@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+ingen_sorna_matt:
   access_token: <%= SecureRandom.hex %>
-  user_id: 1
+  user_id: 2
   location_id: 1
   expires_at: 2012-09-03 19:11:52
 
-two:
+ingen_sorna_isi:
   access_token: <%= SecureRandom.hex %>
   user_id: 1
   location_id: 1
