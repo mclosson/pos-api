@@ -19,9 +19,20 @@ class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
 
     request_headers['HTTP_AUTHORIZATION'] = 'Token token="' + token + '"'
     request_parameters = Hash.new
+
     post("/api/v1/sessions/clock", request_parameters, request_headers)
     assert_response :ok
     assert_match /{'time':'.*'}/, @response.body
+
+    get("/api/v1/skus/100", request_parameters, request_headers)
+    assert_response :ok
+    #TODO: Add an assert here to verify the fields returned
+    get("/api/v1/skus/101", request_parameters, request_headers)
+    assert_response :ok
+    #TODO: Add an assert here to verify the fields returned    
+    get("/api/v1/skus/102", request_parameters, request_headers)
+    assert_response :ok
+    #TODO: Add an assert here to verify the fields returned
 
     post("/api/v1/tickets", request_parameters, request_headers)
     assert_response :created
