@@ -38,6 +38,33 @@ class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
     assert_response :created
     assert_match /{"ticket_id":".*"}/, @response.body
 
+    json = ActiveSupport::JSON.decode(@response.body)
+    ticket_id = json['ticket_id']
+
+    response_parameters = Hash.new
+    response_parameters[:sku] = 100
+    post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
+    assert_response :created
+    # assert_match /something.../
+
+    response_parameters = Hash.new
+    response_parameters[:sku] = 101
+    post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
+    assert_response :created
+    # assert_match /something.../
+
+    response_parameters = Hash.new
+    response_parameters[:sku] = 102
+    post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
+    assert_response :created
+    # assert_match /something.../
+    
+    response_parameters = Hash.new
+    response_parameters[:sku] = 100
+    post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
+    assert_response :created
+    # assert_match /something.../
+
     #TODO: Add line items to ticket
     #TODO: Remove a line item from the ticket
     #TODO: Collect payments

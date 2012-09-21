@@ -17,6 +17,8 @@ Posapi::Application.routes.draw do
       # Sales
       post 'tickets' => 'tickets#create' # create ticket POST /ticket/{location_id}/ returns: ticket_id
       get 'skus/:id' => 'skus#show'
+      post 'tickets/:ticket_id/skus' => 'tickets#add_line_item'
+
       # get "sku/:location_id/:sku": 'Sku#details' # get SKU Details GET /SKU/{location_id}/{SKU}
       # sku lookup
       # get "sku/:location_id/:sku" # SKU lookup GET /SKU/{location_id}/{SKU}

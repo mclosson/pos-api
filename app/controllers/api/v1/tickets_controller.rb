@@ -11,4 +11,18 @@ class Api::V1::TicketsController < Api::V1::ApiController
       render json: "{'error': '#{error_messages}", status: :unprocessable_entity
     end
   end
+
+  def add_line_item
+    ticket = SalesTicket.find(params[:ticket_id])
+    if ticket
+      if ticket.add_line_item(params[:sku])
+        render json: "{\"message\":\"added sku #{params[:sku]}\"}", status: :created 
+      else
+        render json: "{\"error\":\"could not add sku #{params[:sku]}\"}", status: :unprocessable_entity
+      end
+    else
+      render json: "{\"error\":\"could not add sku #{params[:sku]}\"}", status: :unprocessable_entity
+    end
+  end
+ 
 end

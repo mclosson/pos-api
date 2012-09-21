@@ -3,4 +3,9 @@ class SalesTicket < ActiveRecord::Base
   belongs_to :location
   has_many :line_items, :dependent => :destroy
   validates :location_id, presence: true
+
+  def add_line_item(sku)
+    self.line_items.create(:sku => sku)
+  end
+
 end
