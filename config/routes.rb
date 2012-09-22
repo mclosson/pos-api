@@ -56,8 +56,13 @@ Posapi::Application.routes.draw do
     end
   end
 
-  get 'login' => 'sessions#new', :as => 'login'
-  get 'logout' => 'sessions#destroy', :as => 'logout'
+  resources :sessions
+
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  root to: 'pages#index'
+
   #signup
 
 
