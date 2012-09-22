@@ -1,0 +1,9 @@
+<h2>Account Summary</h2>
+
+<h3>Locations</h3>
+
+<ul>
+<% @locations.each do |location| %>
+  <li><%= location.description %></li>
+<% end %>
+</ul>

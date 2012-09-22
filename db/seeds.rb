@@ -12,9 +12,11 @@ User.destroy_all
 
 ingen = Account.create(name: "Ingen Corporation")
 
-sorna = Location.create(account_id: ingen.id, address1: '200 Dinosaur Way', city: 'Isla Sorna')
+sorna = Location.create(account_id: ingen.id, address1: '200 Dinosaur Way', city: 'Isla Sorna',
+                        description: 'Isla Sorna Store')
 
-Location.create(account_id: ingen.id, address1: '1875 International Drive', city: 'Isla Nublar')
+Location.create(account_id: ingen.id, address1: '1875 International Drive', city: 'Isla Nublar',
+                description: 'Isla Nublar Store')
 
 User.create(account_id: ingen.id, firstname: 'Isi', lastname: 'Robayna', shortname: 'IR', 
             username: 'irobayna', password: 'ipass', email: 'isi@ingen.com', 
