@@ -41,33 +41,47 @@ class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
     json = ActiveSupport::JSON.decode(@response.body)
     ticket_id = json['ticket_id']
 
-    response_parameters = Hash.new
-    response_parameters[:sku] = 100
+    request_parameters = Hash.new
+    request_parameters[:sku] = 100
     post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
     assert_response :created
     # assert_match /something.../
 
-    response_parameters = Hash.new
-    response_parameters[:sku] = 101
+    request_parameters = Hash.new
+    request_parameters[:sku] = 101
     post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
     assert_response :created
     # assert_match /something.../
 
-    response_parameters = Hash.new
-    response_parameters[:sku] = 102
+    request_parameters = Hash.new
+    request_parameters[:sku] = 102
     post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
     assert_response :created
     # assert_match /something.../
     
-    response_parameters = Hash.new
-    response_parameters[:sku] = 100
-    post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
-    assert_response :created
-    # assert_match /something.../
-
     #TODO: Add line items to ticket
     #TODO: Remove a line item from the ticket
     #TODO: Collect payments
+
+    request_parameters = Hash.new
+    request_parameters[:amount] = 10.50
+    post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
+    assert_response :created
+    # assert_match /something.../
+
+    request_parameters = Hash.new
+    request_parameters[:amount] = 20
+    post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
+    assert_response :created
+    # assert_match /something.../
+
+    request_parameters = Hash.new
+    request_parameters[:amount] = 35.17
+    post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
+    assert_response :created
+    # assert_match /something.../
+
+
     #TODO: Totalize items and issue a reciept
 
     delete("/api/v1/sessions/clock", request_parameters, request_headers)
