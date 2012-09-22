@@ -1,4 +1,4 @@
-class Api::V1::SessionsController < ApplicationController
+class Api::V1::SessionsController < ActionController::Base
   
   include TokenAuthenticatable
   respond_to :json
