@@ -64,19 +64,37 @@ class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
     #TODO: Collect payments
 
     request_parameters = Hash.new
+    get("/api/v1/paymenttypes", request_parameters, request_headers)
+    assert_response :ok
+    puts @response.body
+    # assert_match /something.../
+
+    json = ActiveSupport::JSON.decode(@response.body)
+    puts 'test test test'
+    puts json
+    puts 'test test test'
+    cash = json[0]['id']
+    puts cash
+    visa = json[4]['id']
+    gift = json[3]['id']
+
+    request_parameters = Hash.new
     request_parameters[:amount] = 10.50
+    request_parameters[:payment_type_id] = cash
     post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
     assert_response :created
     # assert_match /something.../
 
     request_parameters = Hash.new
     request_parameters[:amount] = 20
+    request_parameters[:payment_type_id] = gift
     post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
     assert_response :created
     # assert_match /something.../
 
     request_parameters = Hash.new
     request_parameters[:amount] = 35.17
+    request_parameters[:payment_type_id] = visa
     post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
     assert_response :created
     # assert_match /something.../

@@ -28,3 +28,12 @@ User.create(account_id: ingen.id, firstname: 'Matt', lastname: 'Closson', shortn
 
 Account.create(name: "Isi and Matt's Clothing Company")
 Account.create(name: "Hurley Surf Wear")
+
+PaymentType.create(location_id: sorna.id, description: 'cash')
+PaymentType.create(location_id: sorna.id, description: 'check')
+PaymentType.create(location_id: sorna.id, description: 'debit')
+PaymentType.create(location_id: sorna.id, description: 'gift card')
+PaymentType.create(location_id: sorna.id, description: 'visa')
+PaymentType.create(location_id: sorna.id, description: 'mastercard')
+PaymentType.create(location_id: sorna.id, description: 'discover')
+PaymentType.create(location_id: sorna.id, description: 'american express')

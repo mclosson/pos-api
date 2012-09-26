@@ -6,6 +6,13 @@ ingen_sorna_matt:
   location_id: 1
   expires_at: 2012-09-03 19:11:52
 
+# This record is  used to show a location that has no payment types available
+ingen_nublar_matt:
+  access_token: <%= SecureRandom.hex %>
+  user_id: 2
+  location_id: nublar
+  expires_at: 2012-09-03 19:11:52
+
 ingen_sorna_isi:
   access_token: <%= SecureRandom.hex %>
   user_id: 1

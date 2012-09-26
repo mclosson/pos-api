@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+cash:
+  location: sorna
+  description: cash
+
+check:
+  location: sorna
+  description: check
+
+debit:
+  location: sorna
+  description: debit
+
+giftcard:
+  location: sorna
+  description: gift card
+
+visa:
+  location: sorna
+  description: visa
+
+mastercard:
+  location: sorna
+  description: mastercard
+
+discover:
+  location: sorna
+  description: discover
+
+amex:
+  location: sorna
+  description: american express

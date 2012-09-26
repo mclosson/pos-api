@@ -19,6 +19,7 @@ Posapi::Application.routes.draw do
       get 'skus/:id' => 'skus#show'
       post 'tickets/:ticket_id/skus' => 'tickets#add_line_item'
       post 'tickets/:ticket_id/payments' => 'payments#create'
+      get 'paymenttypes' => 'payment_types#index'
 
       # post "ticket/:ticket_id/:location_id/payment/:n/:payment_type/:amount" # collect payments POST /ticket/{ticket_id}/{location_id}/payment/{n}/{payment_type}/{amount}
 
