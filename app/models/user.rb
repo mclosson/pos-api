@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
                   :firstname, :lastname, :password, :password_confirmation, :shortname, :username
 
   belongs_to :account
+  belongs_to :location, :foreign_key => :default_location
   has_many :employee_clock_ins
 
   has_secure_password

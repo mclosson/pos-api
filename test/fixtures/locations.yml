@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 sorna:
-  id: 1
   address1: 200 Dinosaur Way
   address2: MyString
   city: Isla Sorna
@@ -20,7 +19,6 @@ sorna:
   account: ingen
 
 nublar:
-  id: 2
   address1: 1875 International Drive
   address2: MyString
   city: Isla Nublar
@@ -39,7 +37,6 @@ nublar:
   account: ingen
 
 area51:
-  id: 3
   address1: 51 Government Drive
   address2: MyString
   city: Area 51

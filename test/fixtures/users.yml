@@ -11,7 +11,8 @@ isi:
   shortname: IR
   username: irobayna
   account: ingen
-  default_location: 1
+  location: sorna
+  #default_location: sorna
 
 matt:
   id: 2
@@ -24,4 +25,5 @@ matt:
   shortname: MC
   username: mclosson
   account: ingen
-  default_location: 1
+  location: sorna
+  #default_location: sorna

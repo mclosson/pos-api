@@ -3,6 +3,8 @@ class ApiKey < ActiveRecord::Base
   attr_accessible :access_token, :expires_at, :location_id, :user_id
   before_create :generate_access_token
   validates :access_token, :uniqueness => true
+  belongs_to :location
+  belongs_to :user
 
   private
 

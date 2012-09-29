@@ -1,33 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 cash:
+  id: 1
   location: sorna
   description: cash
 
 check:
+  id: 2
   location: sorna
   description: check
 
 debit:
+  id: 3
   location: sorna
   description: debit
 
 giftcard:
+  id: 4
   location: sorna
   description: gift card
 
 visa:
+  id: 5
   location: sorna
   description: visa
 
 mastercard:
+  id: 6
   location: sorna
   description: mastercard
 
 discover:
+  id: 7
   location: sorna
   description: discover
 
 amex:
+  id: 8
   location: sorna
   description: american express

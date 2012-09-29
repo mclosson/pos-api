@@ -20,6 +20,7 @@ Posapi::Application.routes.draw do
       post 'tickets/:ticket_id/skus' => 'tickets#add_line_item'
       post 'tickets/:ticket_id/payments' => 'payments#create'
       get 'paymenttypes' => 'payment_types#index'
+      get 'tickets/:ticket_id/reciept' => 'tickets#reciept'
 
       # post "ticket/:ticket_id/:location_id/payment/:n/:payment_type/:amount" # collect payments POST /ticket/{ticket_id}/{location_id}/payment/{n}/{payment_type}/{amount}
 
@@ -31,7 +32,6 @@ Posapi::Application.routes.draw do
       # delete "ticket/:ticket_id/:location_id/:sku" # remove line item DEL /ticket/{ticket_id}/{location_id}/{SKU}
       # delete "ticket/:ticket_id/:location_id" # void ticket DEL /ticket/{ticket_id}/{location_id}/
       # get "ticket/:ticket_id/:location_id" # get ticket details GET /ticket/{ticket_id}/{location_id}/
-      # get "ticket/:ticket_id/:location_id/print" # print receipt GET /ticket/{ticket_id}/{location_id}/print
       # post "ticket/:ticket_id/:location_id/exchange/sku/:sku/new_sku/:new_sku" # exchanges POST /ticket/{ticket_id}/{location_id}/exchange/SKU/{SKU}/new_SKU/{SKU}
       # post "ticket/:ticket_id/:location_id/return/sku/:sku" # returns POST /ticket/{ticket_id}/{location_id}/return/SKU/{SKU}
 

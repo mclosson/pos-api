@@ -3,4 +3,7 @@ class Location < ActiveRecord::Base
   belongs_to :account  
   has_many :sales_tickets, :dependent => :destroy
   has_many :employee_clock_ins
+  has_many :api_keys, :dependent => :destroy
+  has_many :payment_types, :dependent => :destroy
+  has_many :users, :foreign_key => :default_location
 end
