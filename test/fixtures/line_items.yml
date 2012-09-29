@@ -15,3 +15,28 @@ two:
   sku: MyString
   void: false
   discount: 1
+
+islandshirt:
+  sales_ticket_id: 1
+  quantity: 1
+  sales_price: 1.5
+  sku: MyString
+  void: false
+  discount: 1
+
+boardshorts:
+  sales_ticket_id: 1
+  quantity: 1
+  sales_price: 1.5
+  sku: MyString
+  void: false
+  discount: 1
+
+sunglasses:
+  sales_ticket_id: 1
+  quantity: 1
+  sales_price: 1.5
+  sku: MyString
+  void: false
+  discount: 1
+

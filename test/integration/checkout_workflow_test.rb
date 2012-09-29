@@ -92,9 +92,9 @@ class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
     assert_response :created
     # assert_match /something.../
 
-    #request_parameters = Hash.new
-    #get("/api/v1/tickets/#{ticket_id}/reciept", request_parameters, request_headers)
-    #assert_response :ok
+    request_parameters = Hash.new
+    get("/api/v1/tickets/#{ticket_id}/reciept", request_parameters, request_headers)
+    assert_response :ok
 
     delete("/api/v1/sessions/clock", request_parameters, request_headers)
     assert_response :ok
