@@ -10,6 +10,7 @@ Account.destroy_all
 Location.destroy_all
 User.destroy_all
 PaymentType.destroy_all
+Sku.destroy_all
 
 ingen = Account.create(name: "Ingen Corporation")
 
