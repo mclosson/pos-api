@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926020007) do
+ActiveRecord::Schema.define(:version => 20120930134221) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -103,6 +103,34 @@ ActiveRecord::Schema.define(:version => 20120926020007) do
     t.boolean  "void"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+  end
+
+  create_table "skus", :force => true do |t|
+    t.string   "sku"
+    t.integer  "location_id"
+    t.text     "description"
+    t.datetime "inbound_date"
+    t.integer  "supplier_id"
+    t.integer  "article_id"
+    t.integer  "gender_id"
+    t.string   "sex"
+    t.string   "model"
+    t.integer  "inbound_qty"
+    t.integer  "outbound_qty"
+    t.integer  "lost_qty"
+    t.integer  "transferred_qty"
+    t.integer  "transferred_in_qty"
+    t.string   "min_stock_integer"
+    t.float    "sales_price"
+    t.float    "cost_price"
+    t.float    "cost_price_igic"
+    t.boolean  "inactive"
+    t.integer  "unit_size_id"
+    t.string   "color"
+    t.boolean  "synchronized"
+    t.integer  "season_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "users", :force => true do |t|
