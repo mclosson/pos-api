@@ -5,11 +5,24 @@
 <ul>
 <% @locations.each do |location| %>
   <li><%= location.description %>
+    <h3>SKU's</h3>
     <ul>
     <% location.skus.each do |sku| %>
       <li><%= sku.description %></li>
     <% end %>
     </ul>
-  </li>
+    <h3>Payment Type's</h3>
+    <ul>
+    <% location.payment_types.each do |type| %>
+      <li><%= type.description %></li>
+    <% end %>
+    </ul>
+    <h3>Sales Ticket's</h3>
+    <ul>
+    <% location.sales_tickets.each do |ticket| %>
+      <li><%= sales_ticket.description %></li>
+    <% end %>
+    </ul>
+</li>
 <% end %>
 </ul>
