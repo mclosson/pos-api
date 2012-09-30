@@ -14,7 +14,7 @@ class SkusControllerTest < ActionController::TestCase
     parameters = {id: '100'}
     get(:show, parameters)    
     assert_response :ok
-    #assert_match /{"":".*"}/, @response.body
+    assert_match /{.*}/, @response.body
     #TODO: Add an assert to ensure the sku has the proper fields returned
   end
 
