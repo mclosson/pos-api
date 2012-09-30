@@ -6,4 +6,5 @@ class Location < ActiveRecord::Base
   has_many :api_keys, :dependent => :destroy
   has_many :payment_types, :dependent => :destroy
   has_many :users, :foreign_key => :default_location
+  has_many :skus, :dependent => :destroy
 end

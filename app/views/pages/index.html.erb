@@ -4,6 +4,12 @@
 
 <ul>
 <% @locations.each do |location| %>
-  <li><%= location.description %></li>
+  <li><%= location.description %>
+    <ul>
+    <% location.skus.each do |sku| %>
+      <li><%= sku.description %></li>
+    <% end %>
+    </ul>
+  </li>
 <% end %>
 </ul>
