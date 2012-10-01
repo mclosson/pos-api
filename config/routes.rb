@@ -62,6 +62,10 @@ Posapi::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  get 'locations', to: 'locations#index', as: 'locations'
+  get 'tickets', to: 'sales_tickets#index', as: 'sales_tickets'
+  get 'skus', to: 'skus#index', as: 'skus'
+
   root to: 'pages#index'
 
   #signup

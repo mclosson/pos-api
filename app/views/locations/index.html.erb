@@ -1,0 +1,39 @@
+<table class="table table-striped table-condensed table-hover table-bordered">
+  <caption><%= @locations.first.account.name %> Locations</caption>
+  <thead>
+    <tr>
+      <th>address1</th>
+      <th>address2</th>
+      <th>city</th>
+      <th>description</th>
+      <th>direct_distribution</th>
+      <th>fax</th>
+      <th>phone</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @locations.each do |location| %>
+    <tr>
+      <td><%= location.address1 -%></td>
+      <td><%= location.address2 -%></td>
+      <td><%= location.city -%></td>
+      <td><%= location.description -%></td>
+      <td><%= location.direct_distribution -%></td>
+      <td><%= location.fax -%></td>
+      <td><%= location.phone -%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<!--
+:account_id, :active, :address1, :address2, :city, :description, :direct_distribution, :fax,
+:overwrite_cost_price, :overwrite_sales_price, :overwrite_season, :phone, :province,
+:round_sales_price, :short_description, :zipcode
+:sales_tickets, :dependent => :destroy
+:employee_clock_ins
+:api_keys 
+:payment_types 
+:users 
+:skus 
+-->
