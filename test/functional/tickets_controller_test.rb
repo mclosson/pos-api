@@ -44,10 +44,29 @@ class TicketsControllerTest < ActionController::TestCase
     token = api_keys(:ingen_sorna_matt).access_token
     ticket_id = sales_tickets(:one).id
     @request.env['HTTP_AUTHORIZATION'] = 'Token token="' + token + '"'    
-    parameters = {ticket_id: ticket_id, sku: 100} # need to add ticket_id and sku_id to this hash
+    parameters = {ticket_id: ticket_id, sku: 100} 
     post(:add_line_item, parameters)    
     assert_response :created
     #assert_match /{"ticket_id":".*"}/, @response.body
   end
       
+  def test_successfully_get_reciept
+    token = api_keys(:ingen_sorna_matt).access_token
+    ticket_id = sales_tickets(:one).id
+    @request.env['HTTP_AUTHORIZATION'] = 'Token token="' + token + '"'    
+    parameters = {ticket_id: ticket_id}
+    get(:reciept, parameters)
+    assert_response :ok
+  end
+
+  def test_cannot_get_reciept_ticket_not_found
+    pass
+    # need to code this test
+  end
+
+  def test_reciept_payments_not_match_cost    
+    pass
+    # need to code this test
+  end
+
 end
