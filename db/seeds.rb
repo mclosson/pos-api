@@ -91,3 +91,7 @@ Sku.create(
       #'quantity' => 32
 ) 
  
+# This next part really is just to demo the web GUI it isn't needed seed data
+# we should consider moving this somewhere else under lib/ or app/
+# for now it will work here though.
+SalesTicket.create(location_id: sorna.id, sales_person_id: 4117, multi_payment: true) 

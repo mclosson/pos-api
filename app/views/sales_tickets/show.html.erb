@@ -1,0 +1,45 @@
+<table class="table table-striped table-condensed table-hover table-bordered">
+  <caption>Sales Ticket ID#<%= @ticket.id -%> Line Items</caption>
+  <thead>
+    <tr>
+      <th>discount</th>
+      <th>quantity</th>
+      <th>sales_price</th>
+      <th>SKU</th>
+      <th>void</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @ticket.line_items.each do |item| %>
+    <tr>
+      <td><%= item.discount -%></td>
+      <td><%= item.quantity -%></td>
+      <td><%= item.sales_price -%></td>
+      <td><%= item.sku -%></td>
+      <td><%= item.void -%></td>
+      <td><%= item.id -%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<table class="table table-striped table-condensed table-hover table-bordered">
+  <caption>Sales Ticket ID#<%= @ticket.id -%> Payments</caption>
+  <thead>
+    <tr>
+      <th>amount</th>
+      <th>payment_type_id</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @ticket.payments.each do |payment| %>
+    <tr>
+      <td><%= payment.amount-%></td>
+      <td><%= payment.payment_type_id -%></td>
+      <td><%= payment.id -%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

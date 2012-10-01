@@ -3,6 +3,7 @@
     <caption><%= location.description %> Sales Tickets</caption>
     <thead>
       <tr>
+        <th>id</th>
         <th>multi_payment</th>
         <th>payment_type</th>
         <th>refunds_returns_allowed</th>
@@ -15,6 +16,7 @@
     <tbody>
     <% location.sales_tickets.each do |ticket| %>
       <tr>
+        <td><%= link_to ticket.id, sales_ticket_url(ticket) -%></td>
         <td><%= ticket.multi_payment -%></td>
         <td><%= ticket.payment_type -%></td>
         <td><%= ticket.refunds_returns_allowed -%></td>

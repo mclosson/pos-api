@@ -1,0 +1,34 @@
+<table class="table table-striped table-condensed table-hover table-bordered">
+  <caption><%= @users.first.account.name %> Users</caption>
+  <thead>
+    <tr>
+      <th>default_location</th>
+      <th>email</th>
+      <th>employee_id</th>
+      <th>enabled</th>
+      <th>firstname</th>
+      <th>lastname</th>
+      <th>shortname</th>
+      <th>username</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.default_location -%></td>
+      <td><%= user.email -%></td>
+      <td><%= user.employee_id -%></td>
+      <td><%= user.enabled -%></td>
+      <td><%= user.firstname -%></td>
+      <td><%= user.lastname -%></td>
+      <td><%= user.shortname -%></td>
+      <td><%= user.username -%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<!--
+  :account_id, :default_location, :email, :employee_id, :enabled, 
+  :firstname, :lastname, :password, :password_confirmation, :shortname, :username
+-->
