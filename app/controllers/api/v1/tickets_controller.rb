@@ -26,21 +26,21 @@ class Api::V1::TicketsController < Api::V1::ApiController
   end
  
   def reciept
-    ticket = SalesTicket.find(params[:ticket_id])
-    if ticket
-      #TODO: Add check for payments total versus total for checkout here....
-
-      total_paid = ticket.total_paid
-      total_cost = ticket.total_cost
-      
-      if total_paid == total_cost
-        #TODO: print_reciept
-        render json: "{\"message\":\"Checkout completed printing reciept\"}", status: :ok
-      else
-        render json: "{\"error\":\"Total paid: #{total_paid} does not match total cost: #{total_cost}\"}", status: :unprocessable_entity
-      end
-    else
+    begin
+      ticket = SalesTicket.find(params[:ticket_id])
+    rescue ActiveRecord::RecordNotFound
       render json: "{\"error\":\"ticket not found\"}", status: :not_found
+      return
+    end
+      
+    total_paid = ticket.total_paid
+    total_cost = ticket.total_cost
+    
+    if total_paid == total_cost
+      #TODO: print_reciept
+      render json: "{\"message\":\"Checkout completed printing reciept\"}", status: :ok
+    else
+      render json: "{\"error\":\"Total paid: #{total_paid} does not match total cost: #{total_cost}\"}", status: :unprocessable_entity
     end
   end
 

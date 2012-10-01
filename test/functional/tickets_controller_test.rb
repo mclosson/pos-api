@@ -60,8 +60,12 @@ class TicketsControllerTest < ActionController::TestCase
   end
 
   def test_cannot_get_reciept_ticket_not_found
-    pass
-    # need to code this test
+    token = api_keys(:ingen_sorna_matt).access_token
+    @request.env['HTTP_AUTHORIZATION'] = 'Token token="' + token + '"'    
+    invalid_ticket_id = -999999
+    parameters = {ticket_id: invalid_ticket_id}
+    get(:reciept, parameters)
+    assert_response :not_found
   end
 
   def test_reciept_payments_not_match_cost    
