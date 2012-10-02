@@ -45,22 +45,20 @@ class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
     request_parameters[:sku] = 100
     post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
     assert_response :created
-    # assert_match /something.../
+    assert_match /{"message":".*"}/, @response.body
 
     request_parameters = Hash.new
     request_parameters[:sku] = 101
     post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
     assert_response :created
-    # assert_match /something.../
+    assert_match /{"message":".*"}/, @response.body
 
     request_parameters = Hash.new
     request_parameters[:sku] = 102
     post("/api/v1/tickets/#{ticket_id}/skus", request_parameters, request_headers)
     assert_response :created
-    # assert_match /something.../
+    assert_match /{"message":".*"}/, @response.body
     
-    #TODO: Remove a line item from the ticket
-
     request_parameters = Hash.new
     get("/api/v1/paymenttypes", request_parameters, request_headers)
     assert_response :ok
@@ -76,25 +74,26 @@ class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
     request_parameters[:payment_type_id] = cash
     post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
     assert_response :created
-    # assert_match /something.../
+    assert_match /{"payment_id":".*"}/, @response.body
 
     request_parameters = Hash.new
-    request_parameters[:amount] = 20
+    request_parameters[:amount] = 59.33
     request_parameters[:payment_type_id] = gift
     post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
     assert_response :created
-    # assert_match /something.../
+    assert_match /{"payment_id":".*"}/, @response.body
 
     request_parameters = Hash.new
     request_parameters[:amount] = 35.17
     request_parameters[:payment_type_id] = visa
     post("/api/v1/tickets/#{ticket_id}/payments", request_parameters, request_headers)
     assert_response :created
-    # assert_match /something.../
+    assert_match /{"payment_id":".*"}/, @response.body
 
     request_parameters = Hash.new
     get("/api/v1/tickets/#{ticket_id}/reciept", request_parameters, request_headers)
     assert_response :ok
+    assert_match /{"message":".*"}/, @response.body
 
     delete("/api/v1/sessions/clock", request_parameters, request_headers)
     assert_response :ok

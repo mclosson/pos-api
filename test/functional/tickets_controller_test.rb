@@ -47,7 +47,7 @@ class TicketsControllerTest < ActionController::TestCase
     parameters = {ticket_id: ticket_id, sku: 100} 
     post(:add_line_item, parameters)    
     assert_response :created
-    #assert_match /{"ticket_id":".*"}/, @response.body
+    assert_match /{"message":".*"}/, @response.body
   end
       
   def test_successfully_get_reciept

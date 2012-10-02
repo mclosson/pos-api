@@ -6,7 +6,12 @@ class SalesTicket < ActiveRecord::Base
   validates :location_id, presence: true
 
   def add_line_item(sku)
-    self.line_items.create(:sku => sku)
+    item = Sku.find_by_sku(sku)
+    if item
+      self.line_items.create(sku: sku, sales_price: item.sales_price)
+    else
+      return false
+    end
   end
 
   def total_cost

@@ -11,14 +11,16 @@ class PaymentsControllerTest < ActionController::TestCase
   def test_invalid_token_unauthorized
     @request.env['HTTP_AUTHORIZATION'] = 'Token token="BADTOKEN"'    
     ticket_id = sales_tickets(:one).id
-    parameters = {ticket_id: ticket_id, sku: 100}
+    cash = payment_types(:cash).id
+    parameters = {ticket_id: ticket_id, amount: 10.0, payment_type_id: cash}
     post(:create, parameters)    
     assert_response :unauthorized
   end
 
   def test_no_token_unauthorized
     ticket_id = sales_tickets(:one).id
-    parameters = {ticket_id: ticket_id, sku: 100}
+    cash = payment_types(:cash).id
+    parameters = {ticket_id: ticket_id, amount: 10.0, payment_type_id: cash}
     post(:create, parameters)    
     assert_response :unauthorized
   end
@@ -28,7 +30,7 @@ class PaymentsControllerTest < ActionController::TestCase
     ticket_id = sales_tickets(:one).id
     cash = payment_types(:cash).id
     @request.env['HTTP_AUTHORIZATION'] = 'Token token="' + token + '"'    
-    parameters = {ticket_id: ticket_id, sku: 100, payment_type_id: cash}
+    parameters = {ticket_id: ticket_id, amount: 10.0, payment_type_id: cash}
     post(:create, parameters)    
     assert_response :created
     #assert_match /{"payment_id":".*"}/, @response.body

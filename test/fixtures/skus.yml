@@ -1,54 +1,54 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  sku: MyString
-  location_id: 1
-  description: MyText
-  inbound_date: 2012-09-30 09:42:21
-  supplier_id: 1
-  article_id: 1
-  gender_id: 1
-  sex: MyString
-  model: MyString
-  inbound_qty: 1
-  outbound_qty: 1
-  lost_qty: 1
-  transferred_qty: 1
-  transferred_in_qty: 1
-  min_stock_integer: MyString
-  sales_price: 1.5
-  cost_price: 1.5
-  cost_price_igic: 1.5
-  inactive: false
-  unit_size_id: 1
-  color: MyString
-  synchronized: false
-  season_id: 1
+#one:
+#  sku: MyString
+#  location_id: 1
+#  description: MyText
+#  inbound_date: 2012-09-30 09:42:21
+#  supplier_id: 1
+#  article_id: 1
+#  gender_id: 1
+#  sex: MyString
+#  model: MyString
+#  inbound_qty: 1
+#  outbound_qty: 1
+#  lost_qty: 1
+#  transferred_qty: 1
+#  transferred_in_qty: 1
+#  min_stock_integer: MyString
+#  sales_price: 1.5
+#  cost_price: 1.5
+#  cost_price_igic: 1.5
+#  inactive: false
+#  unit_size_id: 1
+#  color: MyString
+#  synchronized: false
+#  season_id: 1
 
-two:
-  sku: MyString
-  location_id: 1
-  description: MyText
-  inbound_date: 2012-09-30 09:42:21
-  supplier_id: 1
-  article_id: 1
-  gender_id: 1
-  sex: MyString
-  model: MyString
-  inbound_qty: 1
-  outbound_qty: 1
-  lost_qty: 1
-  transferred_qty: 1
-  transferred_in_qty: 1
-  min_stock_integer: MyString
-  sales_price: 1.5
-  cost_price: 1.5
-  cost_price_igic: 1.5
-  inactive: false
-  unit_size_id: 1
-  color: MyString
-  synchronized: false
-  season_id: 1
+#two:
+#  sku: MyString
+#  location_id: 1
+#  description: MyText
+#  inbound_date: 2012-09-30 09:42:21
+#  supplier_id: 1
+#  article_id: 1
+#  gender_id: 1
+#  sex: MyString
+#  model: MyString
+#  inbound_qty: 1
+#  outbound_qty: 1
+#  lost_qty: 1
+#  transferred_qty: 1
+#  transferred_in_qty: 1
+#  min_stock_integer: MyString
+#  sales_price: 1.5
+#  cost_price: 1.5
+#  cost_price_igic: 1.5
+#  inactive: false
+#  unit_size_id: 1
+#  color: MyString
+#  synchronized: false
+#  season_id: 1
 
 tshirt:
   sku: 100, 
