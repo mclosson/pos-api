@@ -2,23 +2,25 @@
   <caption>Sales Ticket ID#<%= @ticket.id -%> Line Items</caption>
   <thead>
     <tr>
+      <th>id</th>
+      <th>SKU</th>
+      <th>Description</th>
       <th>discount</th>
       <th>quantity</th>
       <th>sales_price</th>
-      <th>SKU</th>
       <th>void</th>
-      <th>id</th>
     </tr>
   </thead>
   <tbody>
   <% @ticket.line_items.each do |item| %>
     <tr>
+      <td><%= item.id -%></td>
+      <td><%= item.sku -%></td>
+      <td><%= -%></td>
       <td><%= item.discount -%></td>
       <td><%= item.quantity -%></td>
       <td><%= item.sales_price -%></td>
-      <td><%= item.sku -%></td>
       <td><%= item.void -%></td>
-      <td><%= item.id -%></td>
     </tr>
   <% end %>
   </tbody>
@@ -28,17 +30,17 @@
   <caption>Sales Ticket ID#<%= @ticket.id -%> Payments</caption>
   <thead>
     <tr>
-      <th>amount</th>
-      <th>payment_type_id</th>
       <th>id</th>
+      <th>Amount</th>
+      <th>Payment Type</th>
     </tr>
   </thead>
   <tbody>
   <% @ticket.payments.each do |payment| %>
     <tr>
-      <td><%= payment.amount-%></td>
-      <td><%= payment.payment_type_id -%></td>
       <td><%= payment.id -%></td>
+      <td><%= payment.amount-%></td>
+      <td><%= payment.payment_type.description -%></td>
     </tr>
   <% end %>
   </tbody>
