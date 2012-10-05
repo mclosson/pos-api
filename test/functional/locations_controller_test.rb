@@ -13,7 +13,7 @@ class LocationsControllerTest < ActionController::TestCase
     @request.env['X-Registration-Code'] = registration_code
     get(:index)    
     assert_response :ok
-    assert_match /{}/, @response.body
+    assert_match /\[.*\]/, @response.body
   end
 
   def test_invalid_registration_code

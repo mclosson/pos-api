@@ -74,7 +74,8 @@ class Api::V1::SessionsController < ActionController::Base
 
   # TODO: This code is duplicated in devices_controller.rb refactor later into a module.
   def account_lookup
-    @account = Account.find_by_registration_code(@request.headers['X-Registration-Code'])
+    @account = Account.find_by_registration_code(request.headers['X-Registration-Code'])
+    render(json: "{\"error\":\"account not found\"}", status: :not_found) if @account.nil?
   rescue => exception
     logger.error(exception)
     render json: "{\"error\":\"account not found\"}", status: :not_found

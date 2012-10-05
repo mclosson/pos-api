@@ -3,9 +3,15 @@ require 'test_helper'
 class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
  
   test "login, clockin and create a ticket, clockout, logout" do
+    registration_code = accounts(:ingen).registration_code
     request_headers = Hash.new
     request_headers['Accept'] = 'application/json'
     request_headers['Content-type'] = 'application/json'
+    request_headers['X-Registration-Code'] = registration_code
+
+    #POST /devices/link
+    #GET /locations
+    #POST /sessions
 
     request_parameters = Hash.new
     request_parameters[:username] = 'mclosson'
