@@ -9,6 +9,8 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   def test_successfully_create_new_session
+    registration_code = accounts(:ingen).registration_code
+    @request.env['X-Registration-Code'] = registration_code
     parameters = {username: 'mclosson', password: 'mpass'}
     post(:create, parameters)    
     assert_response :created
@@ -17,16 +19,24 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   def test_create_session_invalid_username_or_password
+    registration_code = accounts(:ingen).registration_code
+    @request.env['X-Registration-Code'] = registration_code
     parameters = {username: 'mclosson', password: 'badpass'}
     post(:create, parameters)    
     assert_response :unauthorized
     assert_equal '{"error":"Invalid username or password"}', @response.body
   end
 
+  def test_invalid_registration_code
+    @request.env['X-Registration-Code'] = 'BADCODE'
+    parameters = {username: 'mclosson', password: 'badpass'}
+    post(:create, parameters)    
+    assert_response :not_found
+    assert_equal '{"error":"account not found"}', @response.body
+  end
+
   def test_clock_in_returns_clock_in_time
     token = api_keys(:ingen_sorna_matt).access_token
-    #TODO: Old test token not associated with real account being phased out
-    # @request.env['HTTP_AUTHORIZATION'] = 'Token token="ABCDEF0123456789"'    
     @request.env['HTTP_AUTHORIZATION'] = 'Token token="' + token + '"'
     post(:clock_in)
     assert_response :ok

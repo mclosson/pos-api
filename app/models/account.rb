@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  attr_accessible :name, :users_attributes
+  attr_accessible :name, :registration_code, :users_attributes
   has_many :locations, :dependent => :destroy
   has_many :users, :dependent => :destroy
   before_create :generate_registration_code
