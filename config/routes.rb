@@ -59,6 +59,9 @@ Posapi::Application.routes.draw do
 
   resources :sessions
 
+  get 'accounts/new', to: 'accounts#new'
+  post 'accounts', to: 'accounts#create'
+
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 

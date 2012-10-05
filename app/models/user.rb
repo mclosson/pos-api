@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   belongs_to :location, :foreign_key => :default_location
   has_many :employee_clock_ins
 
+  validates :email, presence: true, uniqueness: true
+
   has_secure_password
 
   def location_valid?(location_id)
