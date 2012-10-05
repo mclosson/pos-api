@@ -7,4 +7,8 @@ class Location < ActiveRecord::Base
   has_many :payment_types, :dependent => :destroy
   has_many :users, :foreign_key => :default_location
   has_many :skus, :dependent => :destroy
+
+  def as_json(options = {})
+    super(only: [:id, :description])
+  end
 end

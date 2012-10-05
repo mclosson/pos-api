@@ -22,6 +22,10 @@ Posapi::Application.routes.draw do
       get 'paymenttypes' => 'payment_types#index'
       get 'tickets/:ticket_id/reciept' => 'tickets#reciept'
 
+      # Device Management
+      post 'devices/link' => 'devices#link'
+      get 'locations' => 'locations#index'
+
       # post "ticket/:ticket_id/:location_id/payment/:n/:payment_type/:amount" # collect payments POST /ticket/{ticket_id}/{location_id}/payment/{n}/{payment_type}/{amount}
 
       # get "sku/:location_id/:sku": 'Sku#details' # get SKU Details GET /SKU/{location_id}/{SKU}

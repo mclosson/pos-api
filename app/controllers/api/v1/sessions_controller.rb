@@ -6,6 +6,7 @@ class Api::V1::SessionsController < ActionController::Base
   # The method :restrict_access which is called in this before_filter is
   # defined in the TokenAuthenticatable module we included above
   before_filter :restrict_access, only: [:destroy, :clock_in, :clock_out]
+  before_filter :account_lookup, only: [:create]
 
   def create
     user = authenticate(params[:username], params[:password])
@@ -69,6 +70,14 @@ class Api::V1::SessionsController < ActionController::Base
   def authenticate(username, password)
     user = User.find_by_username(username)
     user.nil? ? false : user.authenticate(password)
+  end
+
+  # TODO: This code is duplicated in devices_controller.rb refactor later into a module.
+  def account_lookup
+    @account = Account.find_by_registration_code(@request.headers['X-Registration-Code'])
+  rescue => exception
+    logger.error(exception)
+    render json: "{\"error\":\"account not found\"}", status: :not_found
   end
 
 end
