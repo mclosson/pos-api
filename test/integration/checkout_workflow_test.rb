@@ -9,9 +9,16 @@ class CheckoutWorkflowTest < ActionDispatch::IntegrationTest
     request_headers['Content-type'] = 'application/json'
     request_headers['X-Registration-Code'] = registration_code
 
-    #POST /devices/link
-    #GET /locations
-    #POST /sessions
+    request_parameters = Hash.new
+    post("/api/v1/devices/link", request_parameters, request_headers)
+    assert_response :ok
+    assert_match /{}/, @response.body
+
+    get("/api/v1/locations", request_parameters, request_headers)
+    assert_response :ok
+    assert_match /\[.*\]/, @response.body
+
+    #TODO: Parse out first location returned and use it for login
 
     request_parameters = Hash.new
     request_parameters[:username] = 'mclosson'
