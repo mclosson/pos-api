@@ -4,4 +4,18 @@ class SkusController < ApplicationController
   def index
     @locations = current_user.account.locations
   end
+
+  def new
+    @sku = Sku.new
+  end
+
+  def create
+    @sku = Sku.new(params[:sku])
+    if @sku.save
+      redirect_to skus_url
+    else
+      render :new
+    end
+  end
+
 end

@@ -73,6 +73,8 @@ Posapi::Application.routes.draw do
   get 'tickets', to: 'sales_tickets#index', as: 'sales_tickets'
   get 'tickets/:id', to: 'sales_tickets#show', as: 'sales_ticket'
   get 'skus', to: 'skus#index', as: 'skus'
+  get 'skus/new', to: 'skus#new', as: 'new_sku'
+  post 'skus', to: 'skus#create'
   get 'users', to: 'users#index', as: 'users'
 
   root to: 'pages#index'

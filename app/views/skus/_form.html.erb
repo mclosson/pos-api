@@ -1,0 +1,107 @@
+<%= form_for(@sku) do |f| %> 
+  <% if @sku.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sku.errors.count, "error") %> prohibited this account from being saved:</h2>
+      <ul>
+      <% @sku.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :sku %><br />
+    <%= f.text_field :sku %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id %><br />
+    <%= f.text_field :location_id %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :inbound_date %><br />
+    <%= f.text_field :inbound_date %>
+  </div>
+  <div class="field">
+    <%= f.label :supplier_id %><br />
+    <%= f.text_field :supplier_id %>
+  </div>
+  <div class="field">
+    <%= f.label :article_id %><br />
+    <%= f.text_field :article_id %>
+  </div>
+  <div class="field">
+    <%= f.label :gender_id %><br />
+    <%= f.text_field :gender_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br />
+    <%= f.text_field :sex %>
+  </div>
+  <div class="field">
+    <%= f.label :model %><br />
+    <%= f.text_field :model %>
+  </div>
+  <div class="field">
+    <%= f.label :inbound_qty %><br />
+    <%= f.text_field :inbound_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :outbound_qty %><br />
+    <%= f.text_field :outbound_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :lost_qty %><br />
+    <%= f.text_field :lost_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :transferred_qty %><br />
+    <%= f.text_field :transferred_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :transferred_in_qty %><br />
+    <%= f.text_field :transferred_in_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :min_stock_integer %><br />
+    <%= f.text_field :min_stock_integer %>
+  </div>
+  <div class="field">
+    <%= f.label :sales_price %><br />
+    <%= f.text_field :sales_price %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_price %><br />
+    <%= f.text_field :cost_price %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_price_igic %><br />
+    <%= f.text_field :cost_price_igic %>
+  </div>
+  <div class="field">
+    <%= f.label :inactive %><br />
+    <%= f.text_field :inactive %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_size_id %><br />
+    <%= f.text_field :unit_size_id %>
+  </div>
+  <div class="field">
+    <%= f.label :color %><br />
+    <%= f.text_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :synchronized %><br />
+    <%= f.text_field :synchronized %>
+  </div>
+  <div class="field">
+    <%= f.label :season_id %><br />
+    <%= f.text_field :season_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
