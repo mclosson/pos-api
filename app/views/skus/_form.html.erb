@@ -1,7 +1,7 @@
 <%= form_for(@sku) do |f| %> 
   <% if @sku.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@sku.errors.count, "error") %> prohibited this account from being saved:</h2>
+      <h2><%= pluralize(@sku.errors.count, "error") %> prohibited this SKU from being saved:</h2>
       <ul>
       <% @sku.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

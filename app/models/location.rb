@@ -8,6 +8,11 @@ class Location < ActiveRecord::Base
   has_many :users, :foreign_key => :default_location
   has_many :skus, :dependent => :destroy
 
+  validates :account_id, presence: true, numericality: true
+  validates :description, presence: true
+  validates :address1, presence: true
+  validates :city, presence: true
+
   def as_json(options = {})
     super(only: [:id, :description])
   end
