@@ -6,6 +6,7 @@ class LocationsController < ApplicationController
     # Do we need this in the new action?  Maybe we just need Location.new
     #@location = current_user.account.locations.build
     @location = Location.new
+    @location.payment_types.build
   end
 
   def index

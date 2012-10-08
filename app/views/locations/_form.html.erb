@@ -9,66 +9,82 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :address1 %><br />
     <%= f.text_field :address1 %>
   </div>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :address2 %><br />
     <%= f.text_field :address2 %>
   </div>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :city %><br />
     <%= f.text_field :city %>
   </div>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
-  <div class="field">
-    <%= f.label :direct_distribution %><br />
-    <%= f.check_box :direct_distribution %>
-  </div>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :fax %><br />
     <%= f.text_field :fax %>
   </div>
-  <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </div>
-  <div class="field">
-    <%= f.label :overwrite_cost_price %><br />
-    <%= f.check_box :overwrite_cost_price %>
-  </div>
-  <div class="field">
-    <%= f.label :overwrite_sales_price %><br />
-    <%= f.check_box :overwrite_sales_price %>
-  </div>
-  <div class="field">
-    <%= f.label :overwrite_season %><br />
-    <%= f.check_box :overwrite_season %>
-  </div>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </div>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :province %><br />
     <%= f.text_field :province %>
   </div>
-  <div class="field">
-    <%= f.label :round_sales_price %><br />
-    <%= f.check_box :round_sales_price %>
-  </div>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :short_description %><br />
     <%= f.text_field :short_description %>
   </div>
-  <div class="field">
+  <div class="field wrappable">
     <%= f.label :zipcode %><br />
     <%= f.text_field :zipcode %>
   </div>
+  <div class="clear"></div>
+  <div class="field">
+    <label class="checkbox">
+      <%= f.check_box :direct_distribution %>
+      Direct Distribution
+    </label>
+  </div>
+  <div class="field">
+    <label class="checkbox">
+      <%= f.check_box :active %>
+      Active
+    </label>
+  </div>
+  <div class="field">
+    <label class="checkbox">
+      <%= f.check_box :overwrite_cost_price %>
+      Overwrite Cost Price
+    </label>
+  </div>
+  <div class="field">
+    <label class="checkbox">
+      <%= f.check_box :overwrite_sales_price %>
+      Overwrite Sales Price
+    </label>
+  </div>
+  <div class="field">
+    <label class="checkbox">
+      <%= f.check_box :overwrite_season %>
+      Overwrite Season
+    </label>
+  </div>
+  <div class="field">
+    <label class="checkbox">
+      <%= f.check_box :round_sales_price %>
+      Round Sales Price
+    </label>
+  </div>
+  <%#= f.fields_for :payment_types do |builder| %>
+    <%#= render 'payment_type_fields', f: builder %>
+  <%# end %>
   <div class="actions">
     <%= f.submit %>
   </div>

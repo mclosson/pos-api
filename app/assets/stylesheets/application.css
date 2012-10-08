@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+div.wrappable {
+  display: inline;
+  float: left;
+  padding-right: 10px;
+}
+
+div.clear {
+  clear: both;
+}
