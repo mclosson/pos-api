@@ -15,7 +15,7 @@
   </div>
   <div class="field">
     <%= f.label :location_id %><br />
-    <%= f.text_field :location_id %>
+    <%= collection_select :sku, :location_id, @locations, :id, :address1 %>
   </div>
   <div class="field">
     <%= f.label :description %><br />

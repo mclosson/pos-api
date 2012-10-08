@@ -7,6 +7,7 @@ class SkusController < ApplicationController
 
   def new
     @sku = Sku.new
+    @locations = current_user.account.locations.all
   end
 
   def create
