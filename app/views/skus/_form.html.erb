@@ -27,15 +27,15 @@
   </div>
   <div class="field wrappable">
     <%= f.label :supplier_id %><br />
-    <%= f.text_field :supplier_id %><!-- Needs Combobox -->
+    <%= collection_select :sku, :supplier_id, @suppliers, :id, :name %>
   </div>
   <div class="field wrappable">
     <%= f.label :article_id %><br />
-    <%= f.text_field :article_id %><!-- Needs Combobox -->
+    <%= collection_select :sku, :article_id, @articles, :id, :description %>
   </div>
   <div class="field wrappable">
     <%= f.label :gender_id %><br />
-    <%= f.text_field :gender_id %><!-- Needs Combobox -->
+    <%= collection_select :sku, :gender_id, @genders, :id, :description %>
   </div>
   <div class="field wrappable">
     <%= f.label :sex %><br />
@@ -83,7 +83,7 @@
   </div>
   <div class="field wrappable">
     <%= f.label :unit_size_id %><br />
-    <%= f.text_field :unit_size_id %><!-- Needs Combobox -->
+    <%= collection_select :sku, :unit_size_id, @unit_sizes, :id, :description %>
   </div>
   <div class="field wrappable">
     <%= f.label :color %><br />

@@ -1,4 +1,31 @@
 Posapi::Application.routes.draw do
+  resources :unit_sizes
+  resources :genders
+  resources :articles
+  resources :suppliers
+  resources :sessions
+
+  get 'accounts/new', to: 'accounts#new'
+  post 'accounts', to: 'accounts#create'
+
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  #get 'locations', to: 'locations#index', as: 'locations'
+  resources :locations
+
+  get 'tickets', to: 'sales_tickets#index', as: 'sales_tickets'
+  get 'tickets/:id', to: 'sales_tickets#show', as: 'sales_ticket'
+
+  get 'skus', to: 'skus#index', as: 'skus'
+  get 'skus/new', to: 'skus#new', as: 'new_sku'
+  post 'skus', to: 'skus#create'
+
+  get 'users', to: 'users#index', as: 'users'
+
+  root to: 'pages#index'
+
+
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       # Session Management
@@ -60,31 +87,6 @@ Posapi::Application.routes.draw do
 
     end
   end
-
-  resources :sessions
-
-  get 'accounts/new', to: 'accounts#new'
-  post 'accounts', to: 'accounts#create'
-
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
-
-  #get 'locations', to: 'locations#index', as: 'locations'
-  resources :locations
-
-  get 'tickets', to: 'sales_tickets#index', as: 'sales_tickets'
-  get 'tickets/:id', to: 'sales_tickets#show', as: 'sales_ticket'
-
-  get 'skus', to: 'skus#index', as: 'skus'
-  get 'skus/new', to: 'skus#new', as: 'new_sku'
-  post 'skus', to: 'skus#create'
-
-  get 'users', to: 'users#index', as: 'users'
-
-  root to: 'pages#index'
-
-  #signup
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
