@@ -1,37 +1,38 @@
-<%= form_for(@supplier) do |f| %>
-  <% if @supplier.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@supplier.errors.count, "error") %> prohibited this supplier from being saved:</h2>
-
-      <ul>
-      <% @supplier.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @supplier, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :telephone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :telephone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :notes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :notes, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :inactive, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :inactive, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :margin, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :margin, :class => 'number_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :telephone %><br />
-    <%= f.text_field :telephone %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br />
-    <%= f.text_area :notes %>
-  </div>
-  <div class="field">
-    <%= f.label :inactive %><br />
-    <%= f.check_box :inactive %>
-  </div>
-  <div class="field">
-    <%= f.label :margin %><br />
-    <%= f.number_field :margin %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                suppliers_path, :class => 'btn' %>
   </div>
 <% end %>

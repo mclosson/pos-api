@@ -1,30 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Supplier -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @supplier.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @supplier.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:telephone) %>:</strong></dt>
+  <dd><%= @supplier.telephone %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
+  <dd><%= @supplier.notes %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:inactive) %>:</strong></dt>
+  <dd><%= @supplier.inactive %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:margin) %>:</strong></dt>
+  <dd><%= @supplier.margin %></dd>
+</dl>
 
-<p>
-  <b>Telephone:</b>
-  <%= @supplier.telephone %>
-</p>
-
-<p>
-  <b>Notes:</b>
-  <%= @supplier.notes %>
-</p>
-
-<p>
-  <b>Inactive:</b>
-  <%= @supplier.inactive %>
-</p>
-
-<p>
-  <b>Margin:</b>
-  <%= @supplier.margin %>
-</p>
-
-
-<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
-<%= link_to 'Back', suppliers_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              suppliers_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_supplier_path(@supplier), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              supplier_path(@supplier),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

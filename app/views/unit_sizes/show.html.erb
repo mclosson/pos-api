@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = UnitSize -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Description:</b>
-  <%= @unit_size.description %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
+  <dd><%= @unit_size.size %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @unit_size.description %></dd>
+</dl>
 
-<p>
-  <b>Size:</b>
-  <%= @unit_size.size %>
-</p>
-
-
-<%= link_to 'Edit', edit_unit_size_path(@unit_size) %> |
-<%= link_to 'Back', unit_sizes_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              unit_sizes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_unit_size_path(@unit_size), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              unit_size_path(@unit_size),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
