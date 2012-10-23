@@ -1,0 +1,39 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @user.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:employee_id) %>:</strong></dt>
+  <dd><%= @user.employee_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:enabled) %>:</strong></dt>
+  <dd><%= @user.enabled %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:firstname) %>:</strong></dt>
+  <dd><%= @user.firstname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:lastname) %>:</strong></dt>
+  <dd><%= @user.lastname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:password_digest) %>:</strong></dt>
+  <dd><%= @user.password_digest %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:shortname) %>:</strong></dt>
+  <dd><%= @user.shortname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
+  <dd><%= @user.username %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:account_id) %>:</strong></dt>
+  <dd><%= @user.account_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:default_location) %>:</strong></dt>
+  <dd><%= @user.default_location %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              users_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_user_path(@user), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              user_path(@user),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
