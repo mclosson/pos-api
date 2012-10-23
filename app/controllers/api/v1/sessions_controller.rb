@@ -68,7 +68,11 @@ class Api::V1::SessionsController < ActionController::Base
   private
 
   def authenticate(username, password)
-    user = User.find_by_username(username)
+    registration_code = request.headers['X-Registration-Code']
+    account = Account.where(registration_code: registration_code).first
+
+    # TODO: Probably need to add a constraint requiring unique username's per account
+    user = User.where(account: account, username: username).first
     user.nil? ? false : user.authenticate(password)
   end
 
