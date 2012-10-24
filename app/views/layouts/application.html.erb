@@ -49,6 +49,16 @@
           <%= link_to "Back Office", root_url, class: 'brand' %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Articles", articles_url %></li>
+                  <li><%= link_to "Genders", genders_url %></li>
+                  <li><%= link_to "Suppliers", suppliers_url %></li>
+                  <li><%= link_to "Unit Sizes", unit_sizes_url %></li>
+                </ul>
+              </li>
             <% if current_user %>
               <li><%= link_to "Users", users_url %></li>
               <li><%= link_to "Locations", locations_url %></li>
@@ -67,30 +77,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <% if current_user %>
-                <li><%= link_to "Users", users_url %></li>
-                <li><%= link_to "Locations", locations_url %></li>
-                <li><%= link_to "Sales Tickets", sales_tickets_url %></li>
-                <li><%= link_to "SKU's", skus_url %></li>
-                <li><%= link_to "Logout", logout_url %></li>
-                <hr>
-                <h3>Additional Resources</h3>
-                <li><%= link_to "Articles", articles_url %></li>
-                <li><%= link_to "Genders", genders_url %></li>
-                <li><%= link_to "Suppliers", suppliers_url %></li>
-                <li><%= link_to "Unit Sizes", unit_sizes_url %></li>
-              <% else %>
-                <li><%= link_to "Sign Up", '/accounts/new' %></li>
-                <li><%= link_to "Sign In", login_url %></li>
-              <% end %> 
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
+        <div class="span122">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
