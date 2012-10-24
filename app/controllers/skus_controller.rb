@@ -3,6 +3,7 @@ class SkusController < ApplicationController
 
   def index
     @locations = current_user.account.locations
+    @skus = current_user.account.locations.first.skus
   end
 
   def new

@@ -18,7 +18,13 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
+
+  # The following two gems support integration with DataTables
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
 end
+
+gem 'will_paginate'
 
 gem 'jquery-rails'
 

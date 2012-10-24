@@ -1,34 +1,36 @@
-<% @locations.each do |location| %>
-  <table class="table table-striped table-condensed table-hover table-bordered">
-    <caption><%= location.description %> SKU's</caption>
-    <thead>
-      <tr>
-        <th>article_id</th>
-        <th>color</th>
-        <th>cost_price</th>
-        <th>cost_price_igic</th>
-        <th>description</th>
-        <th>gender_id</th>
-        <th>inactive</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% location.skus.each do |sku| %>
-      <tr>
-        <td><%= sku.article_id -%></td>
-        <td><%= sku.color -%></td>
-        <td><%= sku.cost_price -%></td>
-        <td><%= sku.cost_price_igic -%></td>
-        <td><%= sku.description -%></td>
-        <td><%= sku.gender_id -%></td>
-        <td><%= sku.inactive -%></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-<% end %>
+<table id="locations" class="display">
+  <thead>
+    <tr>
+      <th>Article</th>
+      <th>Color</th>
+      <th>Cost Price</th>
+      <th>Cost Price IGIC</th>
+      <th>Description</th>
+      <th>Gender</th>
+      <th>Inactive</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @skus.each do |sku| %>
+    <tr>
+      <td><%= sku.article_id -%></td>
+      <td><%= sku.color -%></td>
+      <td><%= sku.cost_price -%></td>
+      <td><%= sku.cost_price_igic -%></td>
+      <td><%= sku.description -%></td>
+      <td><%= sku.gender_id -%></td>
+      <td><%= sku.inactive -%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'New SKU', new_sku_url %>
+<br />
+<hr>
+
+<p>
+  <%= link_to 'New SKU', new_sku_url %>
+</p>
 
 <!--
   attr_accessible :article_id, :color, :cost_price, :cost_price_igic, :description, :gender_id, :inactive, :inbound_date, :inbound_qty, :location_id, :lost_qty, :min_stock_integer, :model, :outbound_qty, :sales_price, :season_id, :sex, :sku, :supplier_id, :synchronized, :transferred_in_qty, :transferred_qty, :unit_size_id
