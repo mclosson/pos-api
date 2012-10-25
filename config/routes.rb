@@ -22,6 +22,8 @@ Posapi::Application.routes.draw do
   get 'skus', to: 'skus#index', as: 'skus'
   get 'skus/new', to: 'skus#new', as: 'new_sku'
   post 'skus', to: 'skus#create'
+  get 'skus/upload', to: 'skus#upload'
+  post 'skus/upload', to: 'skus#upload'
 
   root to: 'pages#index'
 

@@ -30,4 +30,27 @@ class SkusController < ApplicationController
     end
   end
 
-end
+  def upload
+    @lines = []
+    if request.post?
+
+      # uploaded_file is a representation in memory
+      uploaded_file = params[:skus]
+
+      # file_path is the path on disk to the temp file generated in /tmp/RackMultipart.... something like that
+      file_path = params[:skus].path
+
+      # this next line is throwing an exception due to some kind of parsing/encoding error.... unknown why :(
+      workbook = Spreadsheet::ParseExcel.parse(file_path)
+
+      if workbook
+        worksheet = workbook.worksheet(0)
+        @lines = worksheet.rows.map {|row| row}
+        
+        # here instead of rendering out @lines to the view in reality once the file parsing works we would
+        # actually write the values to the various database tables.... just have to figure out encoding error
+      end
+
+    end
+  end
+end 
