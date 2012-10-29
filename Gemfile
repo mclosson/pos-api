@@ -25,7 +25,8 @@ group :assets do
 end
 
 gem 'will_paginate'
-gem 'parseexcel'
+# gem 'parseexcel'
+gem 'spreadsheet'
 
 gem 'jquery-rails'
 

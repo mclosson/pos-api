@@ -1,5 +1,9 @@
+
+
 class SkusController < ApplicationController
   before_filter :authorize
+
+require 'spreadsheet'
 
   def index
     @locations = current_user.account.locations
@@ -40,12 +44,19 @@ class SkusController < ApplicationController
       # file_path is the path on disk to the temp file generated in /tmp/RackMultipart.... something like that
       file_path = params[:skus].path
 
+      Spreadsheet.client_encoding = 'UTF-8'
+      workbook = Spreadsheet.open file_path
+      
+
       # this next line is throwing an exception due to some kind of parsing/encoding error.... unknown why :(
-      workbook = Spreadsheet::ParseExcel.parse(file_path)
+      #workbook = Spreadsheet::ParseExcel.parse(file_path)
 
       if workbook
-        worksheet = workbook.worksheet(0)
-        @lines = worksheet.rows.map {|row| row}
+        worksheet = workbook.worksheet 0
+        #@lines = worksheet.rows.map {|row| row}
+        worksheet.each do |row|
+          puts row
+        end
         
         # here instead of rendering out @lines to the view in reality once the file parsing works we would
         # actually write the values to the various database tables.... just have to figure out encoding error
