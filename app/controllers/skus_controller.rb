@@ -1,9 +1,7 @@
-
+require 'spreadsheet'
 
 class SkusController < ApplicationController
   before_filter :authorize
-
-require 'spreadsheet'
 
   def index
     @locations = current_user.account.locations
@@ -46,22 +44,46 @@ require 'spreadsheet'
 
       Spreadsheet.client_encoding = 'UTF-8'
       workbook = Spreadsheet.open file_path
-      
-
-      # this next line is throwing an exception due to some kind of parsing/encoding error.... unknown why :(
-      #workbook = Spreadsheet::ParseExcel.parse(file_path)
 
       if workbook
         worksheet = workbook.worksheet 0
+        #
         #@lines = worksheet.rows.map {|row| row}
+
+        # Remove the first line as it contains column headers
+        worksheet.rows.shift
+
         worksheet.each do |row|
-          puts row
+          #description  modelo  color talla(size) upc cantidad(amount)  price category  gender  season
+          #BFT0000090  HNV S 886766182491  2 28  FLEECES BOYS  FA12
+
+          description = row[0]
+          model = row[1]
+          color = row[2]
+          size = row[3]
+          upc = row[4]
+          amount = row[5]
+          price = row[6]
+          category = row[7]
+          gender = row[8]
+          season = row[9]
+          
+          # 0 - this likely goes in the skus table
+          # 1 - this not sure yet maybe in the skus table
+          # 2 - not sure where this goes (color) I don't see a colors table yet
+          UnitSize.create(size: size) unless UnitSize.where(size: size).count > 0
+          # 4 - this likely goes in the skus table
+          # 5 - this likely goes in the skus table
+          # 6 - this I'm not sure what table it goes in yet
+          # 7 - this goes in the seasons table which needs to be created
+          Gender.create(description: gender) unless Gender.where(description: gender).count > 0
+          Season.create(name: season) unless Season.where(name: season).count > 0
         end
-        
-        # here instead of rendering out @lines to the view in reality once the file parsing works we would
-        # actually write the values to the various database tables.... just have to figure out encoding error
+
       end
 
     end
+
+    redirect_to skus_url, notice: "SKU's uploaded"
   end
 end 

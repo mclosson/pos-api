@@ -1,5 +1,7 @@
 Posapi::Application.routes.draw do
 
+  resources :seasons
+
   resources :users
   resources :unit_sizes
   resources :genders
