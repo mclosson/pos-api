@@ -47,43 +47,45 @@ class SkusController < ApplicationController
 
       if workbook
         worksheet = workbook.worksheet 0
-        #
-        #@lines = worksheet.rows.map {|row| row}
 
         # Remove the first line as it contains column headers
         worksheet.rows.shift
 
-        worksheet.each do |row|
-          #description  modelo  color talla(size) upc cantidad(amount)  price category  gender  season
-          #BFT0000090  HNV S 886766182491  2 28  FLEECES BOYS  FA12
+        sizes = worksheet.rows.map {|row| row[3]}.uniq
+        genders = worksheet.rows.map {|row| row[8]}.uniq
+        seasons = worksheet.rows.map {|row| row[9]}.uniq
 
-          description = row[0]
-          model = row[1]
-          color = row[2]
-          size = row[3]
-          upc = row[4]
-          amount = row[5]
-          price = row[6]
-          category = row[7]
-          gender = row[8]
-          season = row[9]
-          
-          # 0 - this likely goes in the skus table
-          # 1 - this not sure yet maybe in the skus table
-          # 2 - not sure where this goes (color) I don't see a colors table yet
+        sizes.each do |size| 
           UnitSize.create(size: size) unless UnitSize.where(size: size).count > 0
-          # 4 - this likely goes in the skus table
-          # 5 - this likely goes in the skus table
-          # 6 - this I'm not sure what table it goes in yet
-          # 7 - this goes in the seasons table which needs to be created
+        end
+
+        genders.each do |gender|
           Gender.create(description: gender) unless Gender.where(description: gender).count > 0
+        end
+
+        seasons.each do |season|
           Season.create(name: season) unless Season.where(name: season).count > 0
+        end
+
+        worksheet.each do |row|
+          #amount = row[5]
+          #category = row[7]
+          
+          Sku.create(
+            sku: row[4],
+            cost_price: row[5],
+            description: row[0], 
+            model: row[1], 
+            color: row[2], 
+            sales_price: row[6]
+          ) unless Sku.where(description: row[0]).count > 0
+
         end
 
       end
 
+      redirect_to skus_url, notice: "SKU's uploaded"
     end
-
-    redirect_to skus_url, notice: "SKU's uploaded"
   end
+
 end 
