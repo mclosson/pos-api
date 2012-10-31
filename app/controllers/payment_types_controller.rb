@@ -36,6 +36,7 @@ class PaymentTypesController < ApplicationController
   # GET /payment_types/1/edit
   def edit
     @payment_type = PaymentType.find(params[:id])
+    @locations = current_user.account.locations.all
   end
 
   # POST /payment_types
