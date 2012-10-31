@@ -55,30 +55,36 @@ class SkusController < ApplicationController
         genders = worksheet.rows.map {|row| row[8]}.uniq
         seasons = worksheet.rows.map {|row| row[9]}.uniq
 
-        sizes.each do |size| 
-          UnitSize.create(size: size) unless UnitSize.where(size: size).count > 0
-        end
+        #sizes.each do |size| 
+        #  UnitSize.create(size: size) unless UnitSize.where(size: size).count > 0
+        #end
 
-        genders.each do |gender|
-          Gender.create(description: gender) unless Gender.where(description: gender).count > 0
-        end
+        #genders.each do |gender|
+        #  Gender.create(description: gender) unless Gender.where(description: gender).count > 0
+        #end
 
-        seasons.each do |season|
-          Season.create(name: season) unless Season.where(name: season).count > 0
-        end
+        #seasons.each do |season|
+        #  Season.create(name: season) unless Season.where(name: season).count > 0
+        #end
 
-        worksheet.each do |row|
+        worksheet.rows.each do |row|
           #amount = row[5]
           #category = row[7]
+          logger.info "sku: #{row[4]}"
+          logger.info "cost_price: #{row[5]}"
+          logger.info "description: #{row[0]}" 
+          logger.info "model: #{row[1]}" 
+          logger.info "color: #{row[2]}" 
+          logger.info "sales_price: #{row[6]}"
           
-          Sku.create(
-            sku: row[4],
-            cost_price: row[5],
-            description: row[0], 
-            model: row[1], 
-            color: row[2], 
-            sales_price: row[6]
-          ) unless Sku.where(description: row[0]).count > 0
+          #Sku.create(
+          #  sku: row[4],
+          #  cost_price: row[5],
+          #  description: row[0], 
+          #  model: row[1], 
+          #  color: row[2], 
+          #  sales_price: row[6]
+          #) unless Sku.where(description: row[0]).count > 0
 
         end
 
