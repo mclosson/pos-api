@@ -2,7 +2,17 @@ class PaymentTypesController < ApplicationController
   # GET /payment_types
   # GET /payment_types.json
   def index
-    @payment_types = PaymentType.all
+
+    # Probably not the best way to get these...
+    # TODO: Go back and refactor this into the model at some point
+    @payment_types = [] 
+    current_user.account.locations.each do |location|
+      @payment_types << location.payment_types.map do |pt| 
+        logger.info pt.description
+        pt
+      end
+    end
+    @payment_types.flatten!
 
     respond_to do |format|
       format.html # index.html.erb
