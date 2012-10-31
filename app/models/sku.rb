@@ -12,10 +12,6 @@ class Sku < ActiveRecord::Base
   validates :sales_price, presence: true, numericality: true
   validates :description, presence: true
 
-  # define json options as constant, or you could return them from a method
-  #   EVENT_JSON_OPTS = { :include => { :locations => { :only => [:id], :methods => [:name] } } }
-  #
-
   def as_json(options = {})
     super({
       include: {
@@ -31,9 +27,16 @@ class Sku < ActiveRecord::Base
         :season_id,
         :supplier_id,
         :unit_size_id,
-        :sex # will be removing this column from the database, not used anymore
+        :sex, # will be removing this column from the database, not used anymore
+        :sales_price # being replaced with sales_price_with_currency
+      ],
+      methods: [
+        :sales_price_with_currency
       ]
     })
   end
  
+  def sales_price_with_currency
+    "$%.2f" % sales_price
+  end
 end
