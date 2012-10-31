@@ -1,4 +1,6 @@
 class PaymentTypesController < ApplicationController
+  before_filter :authorize
+
   # GET /payment_types
   # GET /payment_types.json
   def index

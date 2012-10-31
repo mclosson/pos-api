@@ -1,4 +1,6 @@
 class UnitSizesController < ApplicationController
+  before_filter :authorize
+
   # GET /unit_sizes
   # GET /unit_sizes.json
   def index

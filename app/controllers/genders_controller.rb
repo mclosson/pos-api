@@ -1,4 +1,6 @@
 class GendersController < ApplicationController
+  before_filter :authorize
+
   # GET /genders
   # GET /genders.json
   def index
