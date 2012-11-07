@@ -13,12 +13,12 @@
   <tbody>
   <% @skus.each do |sku| %>
     <tr>
-      <td><%= sku.article_id -%></td>
+      <td><%= sku.article.description -%></td>
       <td><%= sku.color -%></td>
       <td><%= sku.cost_price -%></td>
       <td><%= sku.cost_price_igic -%></td>
       <td><%= sku.description -%></td>
-      <td><%= sku.gender_id -%></td>
+      <td><%= sku.gender.description -%></td>
       <td><%= sku.inactive -%></td>
     </tr>
   <% end %>
