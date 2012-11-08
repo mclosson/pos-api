@@ -47,6 +47,23 @@ class SkusController < ApplicationController
     end
   end
 
+  def edit
+    @sku = Sku.new(params[:sku])
+
+    @locations = current_user.account.locations.all
+    #@genders = current_user.account.genders.all
+    #@unit_sizes = current_user.account.unit_sizes.all
+    #@suppliers = current_user.account.suppliers.all
+    #@articles = current_user.account.articles.all
+
+    # I need to change these to filter by account as above - matt
+    @genders = Gender.all
+    @unit_sizes = UnitSize.all
+    @suppliers = Supplier.all
+    @articles = Article.all
+    @seasons = Season.all
+  end
+
   def upload
     @lines = []
     if request.post?

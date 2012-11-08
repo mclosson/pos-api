@@ -27,7 +27,7 @@
   <tbody>
   <% @skus.each do |sku| %>
     <tr>
-      <td><%= sku.sku -%></td>
+      <td><%= link_to(sku.sku, edit_sku_url(sku)) -%></td>
       <td><%= sku.article_description -%></td>
       <td><%= sku.color -%></td>
       <td><%= sku.cost_price_with_currency -%></td>
