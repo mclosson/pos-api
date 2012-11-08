@@ -48,4 +48,20 @@ class Sku < ActiveRecord::Base
     self.gender ? self.gender.description : ''
   end
 
+  def location_address
+    self.location ? self.location.address1 : ''
+  end
+
+  def season_name
+    self.season ? self.season.name : ''
+  end
+
+  def supplier_name
+    self.supplier ? self.supplier.name : ''
+  end
+
+  def unit_size_size
+    self.unit_size ? self.unit_size.size : ''
+  end
+
 end
