@@ -40,6 +40,10 @@ class Sku < ActiveRecord::Base
     "$%.2f" % sales_price
   end
 
+  def cost_price_with_currency
+    "$%.2f" % cost_price
+  end
+
   def article_description
     self.article ?  self.article.description : ''
   end
@@ -63,5 +67,6 @@ class Sku < ActiveRecord::Base
   def unit_size_size
     self.unit_size ? self.unit_size.size : ''
   end
+
 
 end
