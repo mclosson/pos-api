@@ -5,7 +5,9 @@ class SkusController < ApplicationController
 
   def index
     @locations = current_user.account.locations
-    @skus = current_user.account.locations.first.skus
+
+    ids = @locations.map(&:id)
+    @skus = Sku.where(location_id: ids)
   end
 
   def new
@@ -21,6 +23,7 @@ class SkusController < ApplicationController
     @unit_sizes = UnitSize.all
     @suppliers = Supplier.all
     @articles = Article.all
+    @seasons = Season.all
   end
 
   def create
@@ -39,6 +42,7 @@ class SkusController < ApplicationController
       @unit_sizes = UnitSize.all
       @suppliers = Supplier.all
       @articles = Article.all
+      @seasons = Season.all
       render :new
     end
   end

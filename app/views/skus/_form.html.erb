@@ -38,10 +38,6 @@
     <%= collection_select :sku, :gender_id, @genders, :id, :description %>
   </div>
   <div class="field wrappable">
-    <%= f.label :sex %><br />
-    <%= f.text_field :sex %>
-  </div>
-  <div class="field wrappable">
     <%= f.label :model %><br />
     <%= f.text_field :model %>
   </div>
@@ -91,15 +87,9 @@
   </div>
   <div class="field wrappable">
     <%= f.label :season_id %><br />
-    <%= f.text_field :season_id %><!-- Needs Combobox -->
+    <%= collection_select :sku, :season_id, @seasons, :id, :name %>
   </div>
   <div class="clear"></div>
-  <div class="field">
-    <label class="checkbox">
-      <%= f.check_box :synchronized %>
-      Synchronized
-    </label>
-  </div>
   <div class="field">
     <label class="checkbox">
       <%= f.check_box :inactive %>
