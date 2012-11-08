@@ -39,4 +39,13 @@ class Sku < ActiveRecord::Base
   def sales_price_with_currency
     "$%.2f" % sales_price
   end
+
+  def article_description
+    self.article ?  self.article.description : ''
+  end
+
+  def gender_description
+    self.gender ? self.gender.description : ''
+  end
+
 end
