@@ -37,11 +37,11 @@ class Sku < ActiveRecord::Base
   end
  
   def sales_price_with_currency
-    "$%.2f" % sales_price
+    sales_price ? "$%.2f" % sales_price : ''
   end
 
   def cost_price_with_currency
-    "$%.2f" % cost_price
+    cost_price ? "$%.2f" % cost_price : ''
   end
 
   def article_description
