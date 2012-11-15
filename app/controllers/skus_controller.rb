@@ -12,18 +12,13 @@ class SkusController < ApplicationController
 
   def new
     @sku = Sku.new
-    @locations = current_user.account.locations.all
-    #@genders = current_user.account.genders.all
-    #@unit_sizes = current_user.account.unit_sizes.all
-    #@suppliers = current_user.account.suppliers.all
-    #@articles = current_user.account.articles.all
 
-    # I need to change these to filter by account as above - matt
-    @genders = Gender.all
-    @unit_sizes = UnitSize.all
-    @suppliers = Supplier.all
-    @articles = Article.all
-    @seasons = Season.all
+    @locations = current_user.account.locations
+    @genders = current_user.account.genders
+    @unit_sizes = current_user.account.unit_sizes
+    @suppliers = current_user.account.suppliers
+    @articles = current_user.account.articles
+    @seasons = current_user.account.seasons
   end
 
   def create
@@ -31,42 +26,40 @@ class SkusController < ApplicationController
     if @sku.save
       redirect_to skus_url
     else
-      @locations = current_user.account.locations.all
-      #@genders = current_user.account.genders.all
-      #@unit_sizes = current_user.account.unit_sizes.all
-      #@suppliers = current_user.account.suppliers.all
-      #@articles = current_user.account.articles.all
+      @locations = current_user.account.locations
+      @genders = current_user.account.genders
+      @unit_sizes = current_user.account.unit_sizes
+      @suppliers = current_user.account.suppliers
+      @articles = current_user.account.articles
+      @seasons = current_user.account.seasons
 
-      # I need to change these to filter by account as above - matt
-      @genders = Gender.all
-      @unit_sizes = UnitSize.all
-      @suppliers = Supplier.all
-      @articles = Article.all
-      @seasons = Season.all
       render :new
     end
   end
 
   def edit
-    @sku = Sku.new(params[:sku])
+    @sku = Sku.find(params[:id])
 
-    @locations = current_user.account.locations.all
-    #@genders = current_user.account.genders.all
-    #@unit_sizes = current_user.account.unit_sizes.all
-    #@suppliers = current_user.account.suppliers.all
-    #@articles = current_user.account.articles.all
-
-    # I need to change these to filter by account as above - matt
-    @genders = Gender.all
-    @unit_sizes = UnitSize.all
-    @suppliers = Supplier.all
-    @articles = Article.all
-    @seasons = Season.all
+    @locations = current_user.account.locations
+    @genders = current_user.account.genders
+    @unit_sizes = current_user.account.unit_sizes
+    @suppliers = current_user.account.suppliers
+    @articles = current_user.account.articles
+    @seasons = current_user.account.seasons
   end
 
   def upload
+# If the sales price is listed, leave it alone, if not then calculate it as
+# cost_price * margin of the supplier, a spreadsheet is associated with a supplier
+# Fix this... 
+
+    @suppliers = current_user.account.suppliers
+    @locations = current_user.account.locations
+
     @lines = []
     if request.post?
+      supplier_id = params[:supplier]
+      location_id = params[:location]
 
       # uploaded_file is a representation in memory
       uploaded_file = params[:skus]
@@ -103,28 +96,28 @@ class SkusController < ApplicationController
           #amount = row[5]
           #category = row[7]
 
-      location_id = current_user.account.locations.first.id
+      #location_id = current_user.account.locations.first.id
 
       csv = open(file_path, 'r')
 
       csv.lines.first
       sizes = csv.lines.map {|row| row.split(',')[3]}.uniq.select {|size| !size.blank?}
-      sizes.each {|size| UnitSize.create(size: size) unless UnitSize.where(size: size).count > 0}
+      sizes.each {|size| current_user.account.unit_sizes.create(size: size) unless current_user.account.unit_sizes.where(size: size).count > 0}
 
       csv.rewind
       csv.lines.first
       genders = csv.lines.map {|row| row.split(',')[8]}.uniq.select {|gender| !gender.blank?}
-      genders.each {|gender| Gender.create(description: gender) unless Gender.where(description: gender).count > 0}
+      genders.each {|gender| current_user.account.genders.create(description: gender) unless current_user.account.genders.where(description: gender).count > 0}
 
       csv.rewind
       csv.lines.first
       seasons = csv.lines.map {|row| row.split(',')[9]}.uniq.select {|season| !season.blank?}
-      seasons.each {|season| Season.create(name: season) unless Season.where(name: season).count > 0}
+      seasons.each {|season| current_user.account.seasons.create(name: season) unless current_user.account.seasons.where(name: season).count > 0}
 
       csv.rewind
       csv.lines.first
       articles = csv.lines.map {|row| row.split(',')[7]}.uniq.select {|article| !article.blank?}
-      articles.each {|article| Article.create(description: article) unless Article.where(description: article).count > 0}
+      articles.each {|article| current_user.account.articles.create(description: article) unless current_user.account.articles.where(description: article).count > 0}
 
       csv.rewind
       csv.lines.first
@@ -140,7 +133,7 @@ class SkusController < ApplicationController
           sales_price = row.split(',')[6]
 
           # Lookup article, if not found insert nothing
-          articles = Article.where(description: category)
+          articles = current_user.account.articles.where(description: category)
           if articles.count > 0
             article_id = articles.first.id
           else
@@ -148,7 +141,7 @@ class SkusController < ApplicationController
           end
          
           # Lookup article, if not found insert nothing
-          genders = Gender.where(description: gender)
+          genders = current_user.account.genders.where(description: gender)
           if genders.count > 0
             gender_id = genders.first.id
           else
@@ -156,7 +149,7 @@ class SkusController < ApplicationController
           end
 
           if !sku.blank? && !description.blank? && !sales_price.blank?
-            if Sku.where(sku: sku).count == 0
+            if Sku.where(sku: sku).count == 0 # Need to update this if statement to check if SKU exists at account or location level instead of global
               Sku.create(
                 sku: sku,
                 cost_price: cost_price,
@@ -166,7 +159,8 @@ class SkusController < ApplicationController
                 sales_price: sales_price,
                 article_id: article_id,
                 gender_id: gender_id,
-                location_id: location_id
+                location_id: location_id,
+                supplier_id: supplier_id
               )
             end
           end
@@ -177,4 +171,12 @@ class SkusController < ApplicationController
     end
   end
 
+  def update
+    @sku = Sku.find(params[:id])
+    if @sku.update_attributes(params[:sku])
+      redirect_to skus_path, notice: 'SKU was successfully updated'
+    else
+      render action: :edit
+    end
+  end
 end 

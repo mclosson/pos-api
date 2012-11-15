@@ -4,7 +4,7 @@ class GendersController < ApplicationController
   # GET /genders
   # GET /genders.json
   def index
-    @genders = Gender.all
+    @genders = current_user.account.genders
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,7 @@ class GendersController < ApplicationController
   # POST /genders
   # POST /genders.json
   def create
-    @gender = Gender.new(params[:gender])
+    @gender = current_user.account.genders.create(params[:gender])
 
     respond_to do |format|
       if @gender.save

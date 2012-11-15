@@ -4,7 +4,7 @@ class UnitSizesController < ApplicationController
   # GET /unit_sizes
   # GET /unit_sizes.json
   def index
-    @unit_sizes = UnitSize.all
+    @unit_sizes = current_user.account.unit_sizes
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,7 @@ class UnitSizesController < ApplicationController
   # POST /unit_sizes
   # POST /unit_sizes.json
   def create
-    @unit_size = UnitSize.new(params[:unit_size])
+    @unit_size = current_user.account.unit_sizes.create(params[:unit_size])
 
     respond_to do |format|
       if @unit_size.save

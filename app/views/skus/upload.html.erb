@@ -1,4 +1,4 @@
-<h3>Uploaded lines from excel file</h3>
+<h3>Uploaded lines from CSV file</h3>
 
 <ul>
 <% @lines.each do |line| %>
@@ -9,7 +9,11 @@
 <hr />
 
 <%= form_tag({action: 'upload'}, multipart: true) do %>
-  <%= file_field_tag 'skus' %>
+  <%= label_tag :location %>
+  <%= select_tag :location, options_from_collection_for_select(@locations, :id, :address1) %><br />
+  <%= label_tag :supplier %>
+  <%= select_tag :supplier, options_from_collection_for_select(@suppliers, :id, :name) %><br />
+  <%= file_field_tag 'skus' %><br />
   <%= submit_tag 'Upload' %>
 <% end %>
  

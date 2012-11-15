@@ -4,7 +4,7 @@ class SuppliersController < ApplicationController
   # GET /suppliers
   # GET /suppliers.json
   def index
-    @suppliers = Supplier.all
+    @suppliers = current_user.account.suppliers
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,7 @@ class SuppliersController < ApplicationController
   # POST /suppliers
   # POST /suppliers.json
   def create
-    @supplier = Supplier.new(params[:supplier])
+    @supplier = current_user.account.suppliers.create(params[:supplier])
 
     respond_to do |format|
       if @supplier.save

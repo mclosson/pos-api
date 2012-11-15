@@ -4,7 +4,7 @@ class SeasonsController < ApplicationController
   # GET /seasons
   # GET /seasons.json
   def index
-    @seasons = Season.all
+    @seasons = current_user.account.seasons
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,7 @@ class SeasonsController < ApplicationController
   # POST /seasons
   # POST /seasons.json
   def create
-    @season = Season.new(params[:season])
+    @season = current_user.account.seasons.create(params[:season])
 
     respond_to do |format|
       if @season.save

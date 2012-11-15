@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108024633) do
+ActiveRecord::Schema.define(:version => 20121115152400) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20121108024633) do
     t.boolean  "inactive"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "account_id"
   end
 
   create_table "employee_clock_ins", :force => true do |t|
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20121108024633) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "account_id"
   end
 
   create_table "line_items", :force => true do |t|
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20121108024633) do
     t.boolean  "inactive"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "account_id"
   end
 
   create_table "skus", :force => true do |t|
@@ -163,6 +166,7 @@ ActiveRecord::Schema.define(:version => 20121108024633) do
     t.integer  "margin"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "account_id"
   end
 
   create_table "unit_sizes", :force => true do |t|
@@ -170,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20121108024633) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "account_id"
   end
 
   create_table "users", :force => true do |t|

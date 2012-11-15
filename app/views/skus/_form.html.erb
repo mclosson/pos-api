@@ -27,15 +27,15 @@
   </div>
   <div class="field wrappable">
     <%= f.label :supplier_id %><br />
-    <%= collection_select :sku, :supplier_id, @suppliers, :id, :name %>
+    <%= collection_select :sku, :supplier_id, @suppliers, :id, :name, include_blank: true %>
   </div>
   <div class="field wrappable">
     <%= f.label :article_id %><br />
-    <%= collection_select :sku, :article_id, @articles, :id, :description %>
+    <%= collection_select :sku, :article_id, @articles, :id, :description, include_blank: true %>
   </div>
   <div class="field wrappable">
     <%= f.label :gender_id %><br />
-    <%= collection_select :sku, :gender_id, @genders, :id, :description %>
+    <%= collection_select :sku, :gender_id, @genders, :id, :description, include_blank: true %>
   </div>
   <div class="field wrappable">
     <%= f.label :model %><br />
@@ -79,7 +79,7 @@
   </div>
   <div class="field wrappable">
     <%= f.label :unit_size_id %><br />
-    <%= collection_select :sku, :unit_size_id, @unit_sizes, :id, :description %>
+    <%= collection_select :sku, :unit_size_id, @unit_sizes, :id, :size, include_blank: true %>
   </div>
   <div class="field wrappable">
     <%= f.label :color %><br />
@@ -87,7 +87,7 @@
   </div>
   <div class="field wrappable">
     <%= f.label :season_id %><br />
-    <%= collection_select :sku, :season_id, @seasons, :id, :name %>
+    <%= collection_select :sku, :season_id, @seasons, :id, :name, include_blank: true %>
   </div>
   <div class="clear"></div>
   <div class="field">

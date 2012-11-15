@@ -5,6 +5,12 @@ class Account < ActiveRecord::Base
   before_create :generate_registration_code
   validates :name, presence: true
 
+  has_many :genders, :dependent => :destroy
+  has_many :suppliers, :dependent => :destroy
+  has_many :unit_sizes, :dependent => :destroy
+  has_many :articles, :dependent => :destroy
+  has_many :seasons, :dependent => :destroy
+
   accepts_nested_attributes_for :users
 
   def generate_registration_code
